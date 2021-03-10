@@ -1,0 +1,2343 @@
+[
+    {
+        "metadata": {
+            "columns": [
+                {
+                    "roles": {
+                        "category": true
+                    },
+                    "type": {
+                        "underlyingType": 260,
+                        "category": {},
+                        "primitiveType": 4,
+                        "extendedType": 260,
+                        "categoryString": {},
+                        "text": false,
+                        "numeric": true,
+                        "integer": true,
+                        "bool": false,
+                        "dateTime": false,
+                        "duration": false,
+                        "binary": false,
+                        "none": false
+                    },
+                    "displayName": "year_begin",
+                    "queryName": "Test.year_begin",
+                    "expr": {
+                        "_kind": 2,
+                        "source": {
+                            "_kind": 0,
+                            "entity": "Test",
+                            "variable": "t",
+                            "kind": 0
+                        },
+                        "ref": "year_begin",
+                        "kind": 2
+                    },
+                    "rolesIndex": {
+                        "category": [
+                            0
+                        ]
+                    },
+                    "index": 0,
+                    "identityExprs": [
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "year_begin",
+                            "kind": 2
+                        }
+                    ]
+                },
+                {
+                    "roles": {
+                        "measure": true
+                    },
+                    "type": {
+                        "underlyingType": 259,
+                        "category": {},
+                        "primitiveType": 3,
+                        "extendedType": 259,
+                        "categoryString": {},
+                        "text": false,
+                        "numeric": true,
+                        "integer": false,
+                        "bool": false,
+                        "dateTime": false,
+                        "duration": false,
+                        "binary": false,
+                        "none": false
+                    },
+                    "displayName": "Минимум plan_pvz",
+                    "queryName": "Sum(Test.plan_pvz)",
+                    "expr": {
+                        "_kind": 4,
+                        "arg": {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "variable": "t",
+                                "kind": 0
+                            },
+                            "ref": "plan_pvz",
+                            "kind": 2
+                        },
+                        "func": 3,
+                        "kind": 4
+                    },
+                    "sort": 2,
+                    "sortOrder": 0,
+                    "rolesIndex": {
+                        "measure": [
+                            0
+                        ]
+                    },
+                    "index": 1,
+                    "isMeasure": true,
+                    "aggregates": {
+                        "minLocal": 0,
+                        "maxLocal": 30
+                    }
+                },
+                {
+                    "roles": {
+                        "category": true
+                    },
+                    "type": {
+                        "underlyingType": 1,
+                        "category": {},
+                        "primitiveType": 1,
+                        "extendedType": 1,
+                        "categoryString": {},
+                        "text": true,
+                        "numeric": false,
+                        "integer": false,
+                        "bool": false,
+                        "dateTime": false,
+                        "duration": false,
+                        "binary": false,
+                        "none": false
+                    },
+                    "displayName": "enroll_noexam",
+                    "queryName": "Test.enroll_noexam",
+                    "expr": {
+                        "_kind": 2,
+                        "source": {
+                            "_kind": 0,
+                            "entity": "Test",
+                            "variable": "t",
+                            "kind": 0
+                        },
+                        "ref": "enroll_noexam",
+                        "kind": 2
+                    },
+                    "rolesIndex": {
+                        "category": [
+                            1
+                        ]
+                    },
+                    "index": 2,
+                    "identityExprs": [
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "enroll_noexam",
+                            "kind": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        "categorical": {
+            "categories": [
+                {
+                    "source": {
+                        "roles": {
+                            "category": true
+                        },
+                        "type": {
+                            "underlyingType": 260,
+                            "category": {},
+                            "primitiveType": 4,
+                            "extendedType": 260,
+                            "categoryString": {},
+                            "text": false,
+                            "numeric": true,
+                            "integer": true,
+                            "bool": false,
+                            "dateTime": false,
+                            "duration": false,
+                            "binary": false,
+                            "none": false
+                        },
+                        "displayName": "year_begin",
+                        "queryName": "Test.year_begin",
+                        "expr": {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "variable": "t",
+                                "kind": 0
+                            },
+                            "ref": "year_begin",
+                            "kind": 2
+                        },
+                        "rolesIndex": {
+                            "category": [
+                                0
+                            ]
+                        },
+                        "index": 0,
+                        "identityExprs": [
+                            {
+                                "_kind": 2,
+                                "source": {
+                                    "_kind": 0,
+                                    "entity": "Test",
+                                    "kind": 0
+                                },
+                                "ref": "year_begin",
+                                "kind": 2
+                            }
+                        ]
+                    },
+                    "values": [
+                        2019,
+                        2019,
+                        2017,
+                        2018,
+                        2018,
+                        2017
+                    ],
+                    "identity": [
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {},
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        }
+                    ],
+                    "identityFields": [
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "year_begin",
+                            "kind": 2
+                        },
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "enroll_noexam",
+                            "kind": 2
+                        }
+                    ]
+                },
+                {
+                    "source": {
+                        "roles": {
+                            "category": true
+                        },
+                        "type": {
+                            "underlyingType": 1,
+                            "category": {},
+                            "primitiveType": 1,
+                            "extendedType": 1,
+                            "categoryString": {},
+                            "text": true,
+                            "numeric": false,
+                            "integer": false,
+                            "bool": false,
+                            "dateTime": false,
+                            "duration": false,
+                            "binary": false,
+                            "none": false
+                        },
+                        "displayName": "enroll_noexam",
+                        "queryName": "Test.enroll_noexam",
+                        "expr": {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "variable": "t",
+                                "kind": 0
+                            },
+                            "ref": "enroll_noexam",
+                            "kind": 2
+                        },
+                        "rolesIndex": {
+                            "category": [
+                                1
+                            ]
+                        },
+                        "index": 2,
+                        "identityExprs": [
+                            {
+                                "_kind": 2,
+                                "source": {
+                                    "_kind": 0,
+                                    "entity": "Test",
+                                    "kind": 0
+                                },
+                                "ref": "enroll_noexam",
+                                "kind": 2
+                            }
+                        ]
+                    },
+                    "values": [
+                        {},
+                        "1",
+                        "1",
+                        "1",
+                        {},
+                        {}
+                    ],
+                    "identity": [
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2019,
+                                        "typeEncodedValue": "2019L",
+                                        "valueEncoded": "2019L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2019}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 1,
+                                            "category": {},
+                                            "primitiveType": 1,
+                                            "extendedType": 1,
+                                            "categoryString": {},
+                                            "text": true,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": "1",
+                                        "typeEncodedValue": "'1'",
+                                        "valueEncoded": "'1'",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":1,\"v\":\"1\"}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2018,
+                                        "typeEncodedValue": "2018L",
+                                        "valueEncoded": "2018L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2018}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        },
+                        {
+                            "kind": 1,
+                            "_expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "_key": {
+                                "factoryMethod": {},
+                                "value": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                            },
+                            "expr": {
+                                "_kind": 8,
+                                "left": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "year_begin",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 260,
+                                            "category": {},
+                                            "primitiveType": 4,
+                                            "extendedType": 260,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": true,
+                                            "integer": true,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": 2017,
+                                        "typeEncodedValue": "2017L",
+                                        "valueEncoded": "2017L",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "right": {
+                                    "_kind": 13,
+                                    "comparison": 0,
+                                    "left": {
+                                        "_kind": 2,
+                                        "source": {
+                                            "_kind": 0,
+                                            "entity": "Test",
+                                            "kind": 0
+                                        },
+                                        "ref": "enroll_noexam",
+                                        "kind": 2
+                                    },
+                                    "right": {
+                                        "_kind": 17,
+                                        "type": {
+                                            "underlyingType": 0,
+                                            "category": {},
+                                            "primitiveType": 0,
+                                            "extendedType": 0,
+                                            "categoryString": {},
+                                            "text": false,
+                                            "numeric": false,
+                                            "integer": false,
+                                            "bool": false,
+                                            "dateTime": false,
+                                            "duration": false,
+                                            "binary": false,
+                                            "none": false
+                                        },
+                                        "value": {},
+                                        "typeEncodedValue": "null",
+                                        "valueEncoded": "null",
+                                        "kind": 17
+                                    },
+                                    "kind": 13
+                                },
+                                "kind": 8
+                            },
+                            "key": "{\"and\":{\"l\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"year_begin\"}},\"r\":{\"const\":{\"t\":4,\"v\":2017}}}},\"r\":{\"comp\":{\"k\":0,\"l\":{\"col\":{\"s\":{\"e\":\"Test\"},\"r\":\"enroll_noexam\"}},\"r\":{\"const\":{\"t\":0,\"v\":null}}}}}}"
+                        }
+                    ],
+                    "identityFields": [
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "year_begin",
+                            "kind": 2
+                        },
+                        {
+                            "_kind": 2,
+                            "source": {
+                                "_kind": 0,
+                                "entity": "Test",
+                                "kind": 0
+                            },
+                            "ref": "enroll_noexam",
+                            "kind": 2
+                        }
+                    ]
+                }
+            ],
+            "values": [
+                {
+                    "source": {
+                        "roles": {
+                            "measure": true
+                        },
+                        "type": {
+                            "underlyingType": 259,
+                            "category": {},
+                            "primitiveType": 3,
+                            "extendedType": 259,
+                            "categoryString": {},
+                            "text": false,
+                            "numeric": true,
+                            "integer": false,
+                            "bool": false,
+                            "dateTime": false,
+                            "duration": false,
+                            "binary": false,
+                            "none": false
+                        },
+                        "displayName": "Минимум plan_pvz",
+                        "queryName": "Sum(Test.plan_pvz)",
+                        "expr": {
+                            "_kind": 4,
+                            "arg": {
+                                "_kind": 2,
+                                "source": {
+                                    "_kind": 0,
+                                    "entity": "Test",
+                                    "variable": "t",
+                                    "kind": 0
+                                },
+                                "ref": "plan_pvz",
+                                "kind": 2
+                            },
+                            "func": 3,
+                            "kind": 4
+                        },
+                        "sort": 2,
+                        "sortOrder": 0,
+                        "rolesIndex": {
+                            "measure": [
+                                0
+                            ]
+                        },
+                        "index": 1,
+                        "isMeasure": true,
+                        "aggregates": {
+                            "minLocal": 0,
+                            "maxLocal": 30
+                        }
+                    },
+                    "values": [
+                        30,
+                        30,
+                        3,
+                        3,
+                        1,
+                        0
+                    ],
+                    "minLocal": 0,
+                    "maxLocal": 30
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,32 @@
+.shape {
+  fill-opacity: 0.3;
+}
+
+.shape:hover {
+  fill-opacity: 0.8;
+  z-index: 100;
+
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+
+  stroke: #7d2d68;
+  animation: move 3s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+p {
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+
+  position: relative;
+  top: -30px;
+  margin: 50% 0 0 0;
+}

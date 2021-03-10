@@ -1,0 +1,38 @@
+{
+  "name": "visual",
+  "scripts": {
+    "pbiviz": "pbiviz",
+    "start": "pbiviz start",
+    "package": "pbiviz package",
+    "lint": "tslint -c tslint.json -p tsconfig.json"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.6.0",
+    "@babel/runtime-corejs2": "7.6.0",
+    "@devexpress/dx-react-chart": "^2.7.5",
+    "@devexpress/dx-react-core": "^2.7.5",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/data-grid": "^4.0.0-alpha.17",
+    "@types/d3": "5.7.2",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "core-js": "3.2.1",
+    "d3": "5.12.0",
+    "powerbi-visuals-api": "~2.6.1",
+    "powerbi-visuals-utils-dataviewutils": "2.2.1",
+    "powerbi-visuals-utils-formattingutils": "^4.7.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-motion": "^0.5.2",
+    "react-svg-pan-zoom": "^3.10.0",
+    "react-vis": "^1.11.7",
+    "svg-pan-zoom-container": "^0.5.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "ts-loader": "6.1.0",
+    "tslint": "^5.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "typescript": "3.6.3"
+  }
+}
