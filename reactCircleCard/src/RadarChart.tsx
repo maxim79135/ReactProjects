@@ -1,5 +1,13 @@
 import * as React from "react";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import "svg-pan-zoom-container";
+import LineAxes from "./LineAxes";
+import PointCaptions from "./PointCaptions";
+import PointShape from "./PointShape";
+import CircleAxis from "./CircleAxis";
+
+import { polarToX, polarToY } from "./functions";
 
 export interface State {
   width: number;
@@ -7,6 +15,9 @@ export interface State {
   size: number;
   category: string[];
   values: string[];
+  x?: number;
+  y?: number;
+  clickPoint?: (col) => void;
 }
 
 const initialState: State = {
@@ -15,18 +26,12 @@ const initialState: State = {
   size: 700,
   category: [],
   values: [],
+  x: 0,
+  y: 0,
 };
 
 class RadarChart extends React.Component {
   state: State = initialState;
-  //   data = [
-  //     { battery: 0.7, design: 0.5, useful: 0.9, speed: 0.67, weight: 0.8 },
-  //     { battery: 0.6, design: 0.9, useful: 0.8, speed: 0.7, weight: 0.6 },
-  //   ];
-
-  polarToX = (angle, distance) => Math.cos(angle - Math.PI / 2) * distance;
-  polarToY = (angle, distance) => Math.sin(angle - Math.PI / 2) * distance;
-
   points = (points) => {
     return points
       .map((point) => point[0].toFixed(4) + "," + point[1].toFixed(4))
@@ -36,6 +41,10 @@ class RadarChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
+  }
+
+  _onMouseMove(e) {
+    this.setState({ x: e.screenX, y: e.screenY });
   }
 
   pathDefinition(points: number[][]) {
@@ -69,7 +78,16 @@ class RadarChart extends React.Component {
     const scales = [];
 
     const numberOfScales = 5;
-    const { width, height, size, values, category } = this.state;
+    const {
+      width,
+      height,
+      size,
+      values,
+      category,
+      x,
+      y,
+      clickPoint,
+    } = this.state;
     const valuesMap = [];
     const _map = {};
     category.map((v, i) => (_map[v] = Number(values[i])));
@@ -77,63 +95,24 @@ class RadarChart extends React.Component {
     const _values = values.map((x) => +x);
     const maxValue: number = Math.max.apply(null, _values);
 
-    const scale = (value) => (
-      <circle
-        key={`scale-${value}`}
-        cx={0}
-        cy={0}
-        r={((value / numberOfScales) * size) / 2}
-        fill="#FAFAFA"
-        stroke="#999"
-        strokeWidth="0.2"
-      />
-    );
-
-    const axis = () => (col, i) => (
-      <polyline
-        key={`poly-axis-${i}`}
-        points={this.points([
-          [0, 0],
-          [
-            this.polarToX(col.angle, size / 2),
-            this.polarToY(col.angle, size / 2),
-          ],
-        ])}
-        stroke="#555"
-        strokeWidth=".2"
-      />
-    );
-
-    const caption = () => (col) => (
+    const textValue = () => (col) => (
       <text
         key={`caption-of-${col.key}`}
-        x={this.polarToX(col.angle, (size / 2) * 0.95).toFixed(4)}
-        y={this.polarToY(col.angle, (size / 2) * 0.95).toFixed(4)}
+        x={polarToX(
+          col.angle,
+          (((size / 2) * col.value) / maxValue) * 0.9
+        ).toFixed(4)}
+        y={polarToY(
+          col.angle,
+          (((size / 2) * col.value) / maxValue) * 0.9
+        ).toFixed(4)}
         dy={10 / 2}
         fill="#444"
         fontWeight="400"
       >
-        {col.key}
+        {col.value.toFixed(2)}
       </text>
     );
-
-    const textValue = () => (col) => (
-        <text
-          key={`caption-of-${col.key}`}
-          x={this.polarToX(col.angle, (size / 2) * col.value / maxValue * 0.9).toFixed(4)}
-          y={this.polarToY(col.angle, (size / 2) * col.value / maxValue * 0.9).toFixed(4)}
-          dy={10 / 2}
-          fill="#444"
-          fontWeight="400"
-        >
-          {(col.value).toFixed(2)}
-        </text>
-      );
-
-    for (let i = numberOfScales; i > 0; i--) {
-      scales.push(scale(i));
-    }
-    groups.push(<g key={`scales`}>{scales}</g>);
 
     const middleOfChart = (size / 2).toFixed(4);
 
@@ -160,24 +139,26 @@ class RadarChart extends React.Component {
       return {
         key,
         angle: (Math.PI * 2 * i) / all.length,
-        value: new_val[i]
+        value: new_val[i],
       };
     });
-
+    groups.push(<CircleAxis size={size} numberOfScales={numberOfScales}/>);
     if (this.state !== initialState) {
-      groups.push(<g key={`group-axes`}>{columns.map(axis())}</g>);
-      groups.push(<g key={`group-captions`}>{columns.map(caption())}</g>);
+      groups.push(<LineAxes columns={columns} size={size} />);
+      groups.push(<PointCaptions columns={columns} size={size} />);
       groups.push(<g key={`group-text-values`}>{columns.map(textValue())}</g>);
+
       groups.push(
         <g key={`groups}`}>
           <path
             key={`shape-0`}
+            onMouseMove={this._onMouseMove.bind(this)}
             d={this.pathDefinition(
               columns.map((col, i) => {
-                const value = new_val[i] / maxValue * 0.9;
+                const value = (new_val[i] / maxValue) * 0.9;
                 return [
-                  this.polarToX(col.angle, (value * size) / 2),
-                  this.polarToY(col.angle, (value * size) / 2),
+                  polarToX(col.angle, (value * size) / 2),
+                  polarToY(col.angle, (value * size) / 2),
                 ];
               })
             )}
@@ -187,6 +168,14 @@ class RadarChart extends React.Component {
             className="shape"
           />
         </g>
+      );
+      groups.push(
+        <PointShape
+          columns={columns}
+          size={size}
+          maxValue={maxValue}
+          clickPoint={clickPoint}
+        />
       );
     }
 

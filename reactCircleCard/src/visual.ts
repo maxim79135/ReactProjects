@@ -7,6 +7,8 @@ import VisualUpdateOptions = powerbi.extensibility.visual.VisualUpdateOptions;
 import IVisual = powerbi.extensibility.visual.IVisual;
 import PrimitiveValue = powerbi.PrimitiveValue;
 import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
+import ISelectionManager = powerbi.extensibility.ISelectionManager;
+import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 
 import "./../style/visual.less";
 
@@ -21,12 +23,22 @@ export class Visual implements IVisual {
   private target: HTMLElement;
   private viewport: IViewPort;
   private reactRoot: React.ComponentElement<any, any>;
+  private selectionManager: ISelectionManager;
+  private host: IVisualHost;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(RadarChart, {});
     this.target = options.element;
+    this.host = options.host;
+    this.selectionManager = options.host.createSelectionManager();
+
+    this.clickPoint = this.clickPoint.bind(this);
 
     ReactDOM.render(this.reactRoot, this.target);
+  }
+
+  clickPoint(col) {
+    console.log(col)
   }
 
   public update(options: VisualUpdateOptions) {
@@ -55,6 +67,9 @@ export class Visual implements IVisual {
         size: size,
         category: _category,
         values: _values,
+        x: 0,
+        y: 0,
+        clickPoint: this.clickPoint,
       });
     }
   }
