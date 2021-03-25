@@ -1,9 +1,9 @@
 import * as React from "react";
-import { polarToX, polarToY} from "./functions";
+import { polarToX, polarToY } from "./functions";
 
 export interface AxesProps {
   size?: number;
-  columns: { key: string; angle: number; value: number}[];
+  columns: { key: string; angle: number; value: number }[];
 }
 
 class LineAxes extends React.Component<AxesProps> {
@@ -24,10 +24,7 @@ class LineAxes extends React.Component<AxesProps> {
         key={`poly-axis-${i}`}
         points={_points([
           [0, 0],
-          [
-            polarToX(col.angle, size / 2),
-            polarToY(col.angle, size / 2),
-          ],
+          [polarToX(col.angle, size / 2), polarToY(col.angle, size / 2)],
         ])}
         stroke="#555"
         strokeWidth=".2"

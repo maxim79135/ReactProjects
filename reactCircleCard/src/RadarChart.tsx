@@ -120,13 +120,17 @@ class RadarChart extends React.Component {
       return {
         category: v,
         value: values[i],
+        id: i
       };
     });
     test.sort((a, b) => {
       return a.category > b.category ? 1 : -1;
     });
     const new_cat = test.map((v) => {
-      return v.category;
+      return {
+        category: v.category,
+        id: v.id
+      }
     });
     console.log(new_cat);
 
@@ -137,12 +141,13 @@ class RadarChart extends React.Component {
 
     const columns = new_cat.map((key, i, all) => {
       return {
-        key,
+        key: key.category,
         angle: (Math.PI * 2 * i) / all.length,
         value: new_val[i],
+        id: key.id
       };
     });
-    groups.push(<CircleAxis size={size} numberOfScales={numberOfScales}/>);
+    groups.push(<CircleAxis size={size} numberOfScales={numberOfScales} />);
     if (this.state !== initialState) {
       groups.push(<LineAxes columns={columns} size={size} />);
       groups.push(<PointCaptions columns={columns} size={size} />);

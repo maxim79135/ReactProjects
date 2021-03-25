@@ -25,6 +25,7 @@ export class Visual implements IVisual {
   private reactRoot: React.ComponentElement<any, any>;
   private selectionManager: ISelectionManager;
   private host: IVisualHost;
+  private category: DataViewCategoryColumn;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(RadarChart, {});
@@ -38,7 +39,14 @@ export class Visual implements IVisual {
   }
 
   clickPoint(col) {
-    console.log(col)
+    const categorySelectionId = this.host
+      .createSelectionIdBuilder()
+      .withCategory(this.category, col.id)
+      .createSelectionId();
+
+    console.log(categorySelectionId);
+
+    this.selectionManager.select(categorySelectionId);
   }
 
   public update(options: VisualUpdateOptions) {
@@ -49,12 +57,11 @@ export class Visual implements IVisual {
       const height = this.viewport.height;
       const size = Math.min(this.viewport.height, this.viewport.width);
 
-      const category: DataViewCategoryColumn =
-        options.dataViews[0].categorical.categories[0];
+      this.category = options.dataViews[0].categorical.categories[0];
       const values = options.dataViews[0].categorical.values[0];
 
-      const _category: string[] = category.values.map((value: PrimitiveValue) =>
-        value.toString()
+      const _category: string[] = this.category.values.map(
+        (value: PrimitiveValue) => value.toString()
       );
 
       const _values: string[] = values.values.map((value: PrimitiveValue) =>

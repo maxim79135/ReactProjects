@@ -3,7 +3,7 @@ import { polarToX, polarToY } from "./functions";
 
 export interface CaptionProps {
   size?: number;
-  columns: { key: string; angle: number; value: number }[];
+  columns: { key: string; angle: number; value: number; id: number }[];
 }
 
 class PointCaptions extends React.Component<CaptionProps> {
