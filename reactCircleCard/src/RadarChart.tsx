@@ -195,6 +195,7 @@ class RadarChart extends React.Component {
           width={width}
           height={height}
           viewBox={`0 0 ${size} ${size}`}
+          className="main"
         >
           <g transform={`translate(${middleOfChart},${middleOfChart})`}>
             {groups}
