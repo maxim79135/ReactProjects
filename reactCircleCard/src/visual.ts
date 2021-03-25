@@ -38,7 +38,7 @@ export class Visual implements IVisual {
     ReactDOM.render(this.reactRoot, this.target);
   }
 
-  clickPoint(col) {
+  clickPoint(col, multiSelect) {
     const categorySelectionId = this.host
       .createSelectionIdBuilder()
       .withCategory(this.category, col.id)
@@ -46,7 +46,7 @@ export class Visual implements IVisual {
 
     console.log(categorySelectionId);
 
-    this.selectionManager.select(categorySelectionId);
+    this.selectionManager.select(categorySelectionId, multiSelect);
   }
 
   public update(options: VisualUpdateOptions) {

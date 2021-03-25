@@ -21,8 +21,8 @@ function PointShape(props) {
           stroke="#999"
           strokeWidth="0.2"
           className="group-point-shape"
-          onClick={() => {
-            clickPoint(col);
+          onClick={(event) => {
+            clickPoint(col, event.ctrlKey);
           }}
         />
       ))}

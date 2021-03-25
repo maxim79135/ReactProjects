@@ -17,7 +17,7 @@ export interface State {
   values: string[];
   x?: number;
   y?: number;
-  clickPoint?: (col) => void;
+  clickPoint?: (col, multiSelect) => void;
 }
 
 const initialState: State = {
