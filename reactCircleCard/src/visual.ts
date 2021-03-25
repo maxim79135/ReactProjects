@@ -10,6 +10,8 @@ import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import ISelectionId = powerbi.extensibility.ISelectionId;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
+import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInstancesOptions;
+import VisualObjectInstanceEnumeration = powerbi.VisualObjectInstanceEnumeration;
 
 import "./../style/visual.less";
 
@@ -18,7 +20,7 @@ import * as ReactDOM from "react-dom";
 import IViewPort = powerbi.IViewport;
 
 import RadarChart from "./RadarChart";
-import { values } from "d3";
+import { VisualSettings } from "./settings";
 
 export class Visual implements IVisual {
   private target: HTMLElement;
@@ -27,6 +29,7 @@ export class Visual implements IVisual {
   private selectionManager: ISelectionManager;
   private host: IVisualHost;
   private category: DataViewCategoryColumn;
+  private visualSettings: VisualSettings;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(RadarChart, {});
@@ -59,8 +62,18 @@ export class Visual implements IVisual {
     this.selectionManager.select(categorySelectionId, multiSelect);
   }
 
+  public enumerateObjectInstances(
+    options: EnumerateVisualObjectInstancesOptions
+  ): VisualObjectInstanceEnumeration {
+    const settings: VisualSettings =
+      this.visualSettings || <VisualSettings>VisualSettings.getDefault();
+    return VisualSettings.enumerateObjectInstances(settings, options);
+  }
+
   public update(options: VisualUpdateOptions) {
     if (options.dataViews && options.dataViews[0]) {
+      this.updateVisualProperties(options);
+
       this.viewport = options.viewport;
 
       const width = this.viewport.width;
@@ -87,10 +100,19 @@ export class Visual implements IVisual {
         width: width,
         height: height,
         size: size,
+        color: this.visualSettings.radarChart.fill,
         category: _category,
         values: _values,
         clickPoint: this.clickPoint,
       });
     }
+  }
+
+  protected updateVisualProperties(options: VisualUpdateOptions) {
+    this.visualSettings = VisualSettings.parse<VisualSettings>(options.dataViews[0]);
+  }
+
+  protected static parseSettings(dataView: DataView): VisualSettings {
+    return VisualSettings.parse(dataView) as VisualSettings;
   }
 }

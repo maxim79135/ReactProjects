@@ -12,7 +12,22 @@
         }
     ],
     "objects": {
-
+        "radarChart": {
+            "displayName": "Radar Chart",
+            "properties": {
+                "fill": {
+                    "displayName": "Collor",
+                    "description": "The fill point of chard",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
     "dataViewMappings": [
         {

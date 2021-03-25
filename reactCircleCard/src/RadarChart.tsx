@@ -16,6 +16,7 @@ export interface State {
   category: string[];
   values: string[];
   clickPoint?: (col, multiSelect) => void;
+  color?: string;
 }
 
 const initialState: State = {
@@ -56,7 +57,7 @@ class RadarChart extends React.Component {
     const groups = [];
 
     const numberOfScales = 5;
-    const { width, height, size, values, category, clickPoint } = this.state;
+    const { width, height, size, values, category, clickPoint, color} = this.state;
 
     const maxValue: number = Math.max.apply(
       null,
@@ -116,6 +117,7 @@ class RadarChart extends React.Component {
           size={size}
           maxValue={maxValue}
           clickPoint={clickPoint}
+          color={color}
         />
       );
     }

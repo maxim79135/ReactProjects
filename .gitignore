@@ -4,3 +4,5 @@
 node_modules
 dist
 reactCircleCard/webpack.statistics.dev.html
+
+reactCircleCard/webpack.statistics.prod.html

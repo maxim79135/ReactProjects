@@ -1,0 +1,1 @@
+export const POINT_COLOR: string = "#5555FF";

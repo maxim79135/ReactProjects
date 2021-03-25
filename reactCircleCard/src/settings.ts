@@ -25,24 +25,18 @@
  */
 
 "use strict";
+import { POINT_COLOR } from "./constants";
 
 import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
+export class RadarChartSettings {
+  public fill: string = POINT_COLOR;
+  //   public isClustered: boolean = false;
+  //   public gridEnabled: boolean = true;
+  //   public tooltipEnabled: boolean = true;
+}
+
 export class VisualSettings extends DataViewObjectsParser {
-      public dataPoint: dataPointSettings = new dataPointSettings();
-      }
-
-    export class dataPointSettings {
-     // Default color
-      public defaultColor: string = "";
-     // Show all
-      public showAllDataPoints: boolean = true;
-     // Fill
-      public fill: string = "";
-     // Color saturation
-      public fillRule: string = "";
-     // Text Size
-      public fontSize: number = 12;
-     }
-
+  public radarChart: RadarChartSettings = new RadarChartSettings();
+}
