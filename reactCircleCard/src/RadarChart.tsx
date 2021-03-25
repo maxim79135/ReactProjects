@@ -6,8 +6,8 @@ import LineAxes from "./LineAxes";
 import PointCaptions from "./PointCaptions";
 import PointShape from "./PointShape";
 import CircleAxis from "./CircleAxis";
-
-import { polarToX, polarToY } from "./functions";
+import PointValue from "./PointValue";
+import ShapePoliline from "./ShapePoliline";
 
 export interface State {
   width: number;
@@ -15,8 +15,6 @@ export interface State {
   size: number;
   category: string[];
   values: string[];
-  x?: number;
-  y?: number;
   clickPoint?: (col, multiSelect) => void;
 }
 
@@ -26,33 +24,14 @@ const initialState: State = {
   size: 700,
   category: [],
   values: [],
-  x: 0,
-  y: 0,
 };
 
 class RadarChart extends React.Component {
   state: State = initialState;
-  points = (points) => {
-    return points
-      .map((point) => point[0].toFixed(4) + "," + point[1].toFixed(4))
-      .join(" ");
-  };
 
   constructor(props) {
     super(props);
     this.state = initialState;
-  }
-
-  _onMouseMove(e) {
-    this.setState({ x: e.screenX, y: e.screenY });
-  }
-
-  pathDefinition(points: number[][]) {
-    let d = "M" + points[0][0].toFixed(4) + "," + points[0][1].toFixed(4);
-    for (let i = 1; i < points.length; i++) {
-      d += "L" + points[i][0].toFixed(4) + "," + points[i][1].toFixed(4);
-    }
-    return d + "z";
   }
 
   private static updateCallback: (data: object) => void = null;
@@ -75,43 +54,13 @@ class RadarChart extends React.Component {
 
   render() {
     const groups = [];
-    const scales = [];
 
     const numberOfScales = 5;
-    const {
-      width,
-      height,
-      size,
-      values,
-      category,
-      x,
-      y,
-      clickPoint,
-    } = this.state;
-    const valuesMap = [];
-    const _map = {};
-    category.map((v, i) => (_map[v] = Number(values[i])));
-    valuesMap.push(_map);
-    const _values = values.map((x) => +x);
-    const maxValue: number = Math.max.apply(null, _values);
+    const { width, height, size, values, category, clickPoint } = this.state;
 
-    const textValue = () => (col) => (
-      <text
-        key={`caption-of-${col.key}`}
-        x={polarToX(
-          col.angle,
-          (((size / 2) * col.value) / maxValue) * 0.9
-        ).toFixed(4)}
-        y={polarToY(
-          col.angle,
-          (((size / 2) * col.value) / maxValue) * 0.9
-        ).toFixed(4)}
-        dy={10 / 2}
-        fill="#444"
-        fontWeight="400"
-      >
-        {col.value.toFixed(2)}
-      </text>
+    const maxValue: number = Math.max.apply(
+      null,
+      values.map((x) => +x)
     );
 
     const middleOfChart = (size / 2).toFixed(4);
@@ -120,7 +69,7 @@ class RadarChart extends React.Component {
       return {
         category: v,
         value: values[i],
-        id: i
+        id: i,
       };
     });
     test.sort((a, b) => {
@@ -129,10 +78,9 @@ class RadarChart extends React.Component {
     const new_cat = test.map((v) => {
       return {
         category: v.category,
-        id: v.id
-      }
+        id: v.id,
+      };
     });
-    console.log(new_cat);
 
     const new_val = test.map((v) => {
       return +v.value;
@@ -144,35 +92,23 @@ class RadarChart extends React.Component {
         key: key.category,
         angle: (Math.PI * 2 * i) / all.length,
         value: new_val[i],
-        id: key.id
+        id: key.id,
       };
     });
-    groups.push(<CircleAxis size={size} numberOfScales={numberOfScales} />);
     if (this.state !== initialState) {
+      groups.push(<CircleAxis size={size} numberOfScales={numberOfScales} />);
       groups.push(<LineAxes columns={columns} size={size} />);
       groups.push(<PointCaptions columns={columns} size={size} />);
-      groups.push(<g key={`group-text-values`}>{columns.map(textValue())}</g>);
-
       groups.push(
-        <g key={`groups}`}>
-          <path
-            key={`shape-0`}
-            onMouseMove={this._onMouseMove.bind(this)}
-            d={this.pathDefinition(
-              columns.map((col, i) => {
-                const value = (new_val[i] / maxValue) * 0.9;
-                return [
-                  polarToX(col.angle, (value * size) / 2),
-                  polarToY(col.angle, (value * size) / 2),
-                ];
-              })
-            )}
-            stroke={`#edc951`}
-            fill={`#edc951`}
-            fillOpacity=".5"
-            className="shape"
-          />
-        </g>
+        <PointValue columns={columns} size={size} maxValue={maxValue} />
+      );
+      groups.push(
+        <ShapePoliline
+          columns={columns}
+          size={size}
+          maxValue={maxValue}
+          values={new_val}
+        />
       );
       groups.push(
         <PointShape

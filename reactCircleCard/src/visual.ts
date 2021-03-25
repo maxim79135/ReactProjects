@@ -8,6 +8,7 @@ import IVisual = powerbi.extensibility.visual.IVisual;
 import PrimitiveValue = powerbi.PrimitiveValue;
 import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
+import ISelectionId = powerbi.extensibility.ISelectionId;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 
 import "./../style/visual.less";
@@ -34,8 +35,20 @@ export class Visual implements IVisual {
     this.selectionManager = options.host.createSelectionManager();
 
     this.clickPoint = this.clickPoint.bind(this);
+    this.selectionManager.registerOnSelectCallback(() => {
+      this.syncSelectionState(
+        this.category,
+        <ISelectionId[]>this.selectionManager.getSelectionIds()
+      );
+    });
 
     ReactDOM.render(this.reactRoot, this.target);
+  }
+
+  private syncSelectionState(category, selectionIds: ISelectionId[]): void {
+    if (!category || !selectionIds) return;
+    if (!selectionIds.length) return;
+    console.log(selectionIds);
   }
 
   clickPoint(col, multiSelect) {
@@ -43,9 +56,6 @@ export class Visual implements IVisual {
       .createSelectionIdBuilder()
       .withCategory(this.category, col.id)
       .createSelectionId();
-
-    console.log(categorySelectionId);
-
     this.selectionManager.select(categorySelectionId, multiSelect);
   }
 
@@ -68,14 +78,17 @@ export class Visual implements IVisual {
         value.toString()
       );
 
+      this.syncSelectionState(
+        this.category,
+        <ISelectionId[]>this.selectionManager.getSelectionIds()
+      );
+
       RadarChart.update({
         width: width,
         height: height,
         size: size,
         category: _category,
         values: _values,
-        x: 0,
-        y: 0,
         clickPoint: this.clickPoint,
       });
     }
