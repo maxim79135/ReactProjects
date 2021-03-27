@@ -15,7 +15,7 @@
         "radarChart": {
             "displayName": "Radar Chart",
             "properties": {
-                "fill": {
+                "pointColor": {
                     "displayName": "Collor",
                     "description": "The fill point of chard",
                     "type": {
@@ -24,6 +24,13 @@
                                 "color": true
                             }
                         }
+                    }
+                },
+                "numberOfScale": {
+                    "displayName": "Max scale",
+                    "description": "Number of scale",
+                    "type": {
+                        "numeric": true
                     }
                 }
             }

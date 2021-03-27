@@ -31,10 +31,8 @@ import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
 export class RadarChartSettings {
-  public fill: string = POINT_COLOR;
-  //   public isClustered: boolean = false;
-  //   public gridEnabled: boolean = true;
-  //   public tooltipEnabled: boolean = true;
+  public pointColor: string = POINT_COLOR;
+  public numberOfScale: number = 5;
 }
 
 export class VisualSettings extends DataViewObjectsParser {

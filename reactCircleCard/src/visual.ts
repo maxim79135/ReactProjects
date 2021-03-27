@@ -100,16 +100,19 @@ export class Visual implements IVisual {
         width: width,
         height: height,
         size: size,
-        color: this.visualSettings.radarChart.fill,
+        color: this.visualSettings.radarChart.pointColor,
         category: _category,
         values: _values,
         clickPoint: this.clickPoint,
+        numberOfScales: this.visualSettings.radarChart.numberOfScale,
       });
     }
   }
 
   protected updateVisualProperties(options: VisualUpdateOptions) {
-    this.visualSettings = VisualSettings.parse<VisualSettings>(options.dataViews[0]);
+    this.visualSettings = VisualSettings.parse<VisualSettings>(
+      options.dataViews[0]
+    );
   }
 
   protected static parseSettings(dataView: DataView): VisualSettings {
