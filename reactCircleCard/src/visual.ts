@@ -73,6 +73,7 @@ export class Visual implements IVisual {
   public update(options: VisualUpdateOptions) {
     if (options.dataViews && options.dataViews[0]) {
       this.updateVisualProperties(options);
+      console.log(this.host);
 
       this.viewport = options.viewport;
 

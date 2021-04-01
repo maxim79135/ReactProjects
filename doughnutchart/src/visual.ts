@@ -35,6 +35,9 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 import VisualObjectInstance = powerbi.VisualObjectInstance;
 import DataView = powerbi.DataView;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
+import IViewPort = powerbi.IViewport;
+import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
+import PrimitiveValue = powerbi.PrimitiveValue;
 
 import { VisualSettings } from "./settings";
 import * as React from "react";
@@ -45,7 +48,9 @@ import VisualChart from "./VisualChart";
 export class Visual implements IVisual {
   private settings: VisualSettings;
   private target: HTMLElement;
+  private viewport: IViewPort;
   private reactRoot: React.ComponentElement<any, any>;
+  private category: DataViewCategoryColumn;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(VisualChart, {});
@@ -54,7 +59,33 @@ export class Visual implements IVisual {
     ReactDOM.render(this.reactRoot, this.target);
   }
 
-  public update(options: VisualUpdateOptions) {}
+  public update(options: VisualUpdateOptions) {
+    if (options.dataViews && options.dataViews[0]) {
+      this.viewport = options.viewport;
+      const width = this.viewport.width;
+      const height = this.viewport.height;
+      const size = Math.min(height, width);
+
+      this.category = options.dataViews[0].categorical.categories[0];
+      const values = options.dataViews[0].categorical.values[0];
+
+      const _category: string[] = this.category.values.map(
+        (value: PrimitiveValue) => value.toString()
+      );
+
+      const _values: string[] = values.values.map((value: PrimitiveValue) =>
+        value.toString()
+      );
+
+      VisualChart.update({
+        width: width,
+        height: height,
+        size: size,
+        category: _category,
+        values: _values,
+      });
+    }
+  }
 
   private static parseSettings(dataView: DataView): VisualSettings {
     return <VisualSettings>VisualSettings.parse(dataView);

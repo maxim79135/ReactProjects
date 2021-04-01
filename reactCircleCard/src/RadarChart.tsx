@@ -8,6 +8,7 @@ import PointShape from "./PointShape";
 import CircleAxis from "./CircleAxis";
 import PointValue from "./PointValue";
 import ShapePoliline from "./ShapePoliline";
+import Tooltip from "./Tooltip";
 
 export interface State {
   width: number;
@@ -18,6 +19,7 @@ export interface State {
   clickPoint?: (col, multiSelect) => void;
   color?: string;
   numberOfScales: number;
+  isTooltipShown?: boolean;
 }
 
 const initialState: State = {
@@ -29,12 +31,15 @@ const initialState: State = {
   numberOfScales: 5,
 };
 
-class RadarChart extends React.Component {
+class RadarChart extends React.Component<State> {
   state: State = initialState;
 
   constructor(props) {
     super(props);
     this.state = initialState;
+
+    this.showTooltipAction = this.showTooltipAction.bind(this);
+    this.hideTooltipAction = this.hideTooltipAction.bind(this);
   }
 
   private static updateCallback: (data: object) => void = null;
@@ -55,6 +60,14 @@ class RadarChart extends React.Component {
     RadarChart.updateCallback = null;
   }
 
+  showTooltipAction() {
+    this.setState({ isTooltipShown: true });
+  }
+
+  hideTooltipAction() {
+    this.setState({ isTooltipShown: false });
+  }
+
   render() {
     const groups = [];
 
@@ -67,6 +80,7 @@ class RadarChart extends React.Component {
       clickPoint,
       color,
       numberOfScales,
+      isTooltipShown,
     } = this.state;
 
     const maxValue: number = Math.max.apply(
@@ -128,8 +142,12 @@ class RadarChart extends React.Component {
           maxValue={maxValue}
           clickPoint={clickPoint}
           color={color}
+          showTooltipAction={this.showTooltipAction}
+          // tslint:disable-next-line: react-this-binding-issue
+          hideTooltipAction={this.hideTooltipAction}
         />
       );
+      // groups.push(isTooltipShown && <Tooltip />);
     }
 
     return (
