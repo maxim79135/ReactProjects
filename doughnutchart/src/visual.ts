@@ -26,6 +26,7 @@
 "use strict";
 
 import "core-js/stable";
+import "regenerator-runtime/runtime";
 import "./../style/visual.less";
 import powerbi from "powerbi-visuals-api";
 import VisualConstructorOptions = powerbi.extensibility.visual.VisualConstructorOptions;
@@ -38,6 +39,8 @@ import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnume
 import IViewPort = powerbi.IViewport;
 import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
 import PrimitiveValue = powerbi.PrimitiveValue;
+import ISelectionManager = powerbi.extensibility.ISelectionManager;
+import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 
 import { VisualSettings } from "./settings";
 import * as React from "react";
@@ -51,10 +54,16 @@ export class Visual implements IVisual {
   private viewport: IViewPort;
   private reactRoot: React.ComponentElement<any, any>;
   private category: DataViewCategoryColumn;
+  private selectionManager: ISelectionManager;
+  private host: IVisualHost;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(VisualChart, {});
     this.target = options.element;
+    this.host = options.host;
+    this.selectionManager = options.host.createSelectionManager();
+
+    this.clickLegend = this.clickLegend.bind(this);
 
     ReactDOM.render(this.reactRoot, this.target);
   }
@@ -62,6 +71,7 @@ export class Visual implements IVisual {
   public update(options: VisualUpdateOptions) {
     if (options.dataViews && options.dataViews[0]) {
       this.viewport = options.viewport;
+
       const width = this.viewport.width;
       const height = this.viewport.height;
       const size = Math.min(height, width);
@@ -76,15 +86,24 @@ export class Visual implements IVisual {
       const _values: string[] = values.values.map((value: PrimitiveValue) =>
         value.toString()
       );
-
+      console.log(width, height);
       VisualChart.update({
         width: width,
         height: height,
         size: size,
         category: _category,
         values: _values,
+        clickLegend: this.clickLegend
       });
     }
+  }
+
+  clickLegend(col, multiSelect) {
+    const categorySelectionId = this.host
+      .createSelectionIdBuilder()
+      .withCategory(this.category, col)
+      .createSelectionId();
+    this.selectionManager.select(categorySelectionId, multiSelect);
   }
 
   private static parseSettings(dataView: DataView): VisualSettings {
