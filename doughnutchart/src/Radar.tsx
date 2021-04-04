@@ -22,11 +22,10 @@ function _Radar(props) {
         onClick={(e) => {
           if (e !== null) {
             console.log(e);
-            const _index = e.activeTooltipIndex;
+            const _value = e.activeLabel;
             var id;
             data.forEach((v, index) => {
-              console.log(v);
-              if (v.id == _index) id = index;
+              if (v.category == _value) id = v.id;
             });
             clickLegend(id);
           }
@@ -38,17 +37,16 @@ function _Radar(props) {
           onClick={(e) => {
             if (e !== null) {
               console.log(e);
-              const _index = e.index;
+              const _value = e.value;
               var id;
               data.forEach((v, index) => {
-                console.log(v);
-                if (v.id == _index) id = index;
+                if (v.category == _value) id = v.id;
               });
               clickLegend(id);
             }
           }}
         />
-        <PolarRadiusAxis angle={30} domain={[0, max_value]} />
+        <PolarRadiusAxis angle={90} />
         <Radar dataKey="value" cx="50%" cy="50%" fill="#8884d8"></Radar>
         <Tooltip />
       </RadarChart>
