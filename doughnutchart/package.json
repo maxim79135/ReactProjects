@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
     "@babel/runtime": "7.6.0",
     "@babel/runtime-corejs2": "7.6.0",
     "@types/d3": "5.7.2",
