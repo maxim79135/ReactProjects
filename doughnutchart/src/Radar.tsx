@@ -19,7 +19,7 @@ function _Radar(props) {
         width={size}
         height={size}
         data={data}
-        onClick={(e) => {
+        onClick={(e, event) => {
           if (e !== null) {
             console.log(e);
             const _value = e.activeLabel;
@@ -27,11 +27,11 @@ function _Radar(props) {
             data.forEach((v, index) => {
               if (v.category == _value) id = v.id;
             });
-            clickLegend(id);
+            clickLegend(id, event.ctrlKey);
           }
         }}
       >
-        <PolarGrid />
+        <PolarGrid gridType="circle" />
         <PolarAngleAxis
           dataKey="category"
           onClick={(e) => {
