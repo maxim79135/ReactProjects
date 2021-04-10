@@ -75,25 +75,44 @@ export class Visual implements IVisual {
       const width = this.viewport.width;
       const height = this.viewport.height;
       const size = Math.min(height, width);
+      var countTooltipData = 0;
+      var tooltipData = [];
 
       this.category = options.dataViews[0].categorical.categories[0];
       const values = options.dataViews[0].categorical.values[0];
 
-      const _category: string[] = this.category.values.map(
-        (value: PrimitiveValue) => value.toString()
-      );
+      const _category = this.category.values.map((value) => value.toString());
+      const _values = values.values.map((value) => value.toString());
+      const maxValue = options.dataViews[0].categorical.values[0].maxLocal;
 
-      const _values: string[] = values.values.map((value: PrimitiveValue) =>
-        value.toString()
-      );
-      console.log(width, height);
+      countTooltipData = options.dataViews[0].categorical.values.length - 1;
+      if (countTooltipData < 0) countTooltipData = 0;
+      for (let i = 0; i < countTooltipData; i++) {
+        tooltipData.push({
+          name:
+            options.dataViews[0].categorical.values[i + 1].source.displayName,
+          values: options.dataViews[0].categorical.values[i + 1].values
+            .map((v, i) => {
+              return {
+                category: _category[i],
+                value: v,
+                id: i,
+              };
+            })
+            .sort((a, b) => (a.category > b.category ? 1 : -1)),
+        });
+      }
+
       VisualChart.update({
         width: width,
         height: height,
         size: size,
         category: _category,
         values: _values,
-        clickLegend: this.clickLegend
+        clickLegend: this.clickLegend,
+        countTooltipData: countTooltipData,
+        tooltipData: tooltipData,
+        maxValue: maxValue,
       });
     }
   }

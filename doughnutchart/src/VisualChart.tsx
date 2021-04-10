@@ -10,12 +10,17 @@ export interface State {
   category: string[];
   values: string[];
   clickLegend: (col, multiSelect) => void;
+  countTooltipData: number;
+  tooltipData: { name: string; values: [] }[];
+  maxValue?;
 }
 
 const initialState: State = {
   category: [],
   values: [],
   clickLegend: null,
+  countTooltipData: 0,
+  tooltipData: [],
 };
 
 export class VisualChart extends React.Component<State> {
@@ -44,7 +49,17 @@ export class VisualChart extends React.Component<State> {
   }
 
   render() {
-    const { width, height, size, values, category, clickLegend } = this.state;
+    const {
+      width,
+      height,
+      size,
+      values,
+      category,
+      clickLegend,
+      countTooltipData,
+      tooltipData,
+      maxValue,
+    } = this.state;
 
     const chartData = category
       .map((v, i) => {
@@ -56,16 +71,17 @@ export class VisualChart extends React.Component<State> {
       })
       .sort((a, b) => (a.category > b.category ? 1 : -1));
 
-    const new_category = chartData.map((v) => v.category);
-    const max_value = Math.max.apply(
-      null,
-      values.map((v) => Number(v))
-    );
-
     console.log(chartData);
+    console.log(tooltipData);
+
     return (
-      // <_Pie data={chartData} size={size} clickLegend={clickLegend} />
-      <_Radar data={chartData} size={size} clickLegend={clickLegend} max_value={max_value}/>
+      <_Radar
+        data={chartData}
+        size={size}
+        clickLegend={clickLegend}
+        max_value={maxValue}
+        tooltipData={tooltipData}
+      />
     );
   }
 }

@@ -10,9 +10,30 @@ import {
   Legend,
 } from "recharts";
 
+function CustomTooltip(e) {
+  const { active, label, payload, data } = e;
+  if (active) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+        {data.map((v, i) => (
+          <p className="tooltip" key={i}>
+            {`${v.name} : ${v.values[payload[0].payload.id].value}`}
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+}
+
 function _Radar(props) {
-  const { data, size, clickLegend, max_value } = props;
+  const { data, size, clickLegend, max_value, tooltipData } = props;
+  const [opacity, setOpacity] = React.useState(1);
+  const [angleTooltip, setAngleTooltip] = React.useState(false);
+
   console.log(data);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart
@@ -45,10 +66,25 @@ function _Radar(props) {
               clickLegend(id);
             }
           }}
+          onMouseEnter={(e) => {
+            console.log(e);
+          }}
         />
         <PolarRadiusAxis angle={90} />
-        <Radar dataKey="value" cx="50%" cy="50%" fill="#8884d8"></Radar>
-        <Tooltip />
+        <Radar
+          dataKey="value"
+          cx="50%"
+          cy="50%"
+          fill="#8884d8"
+          fillOpacity={opacity}
+          onMouseEnter={(e) => {
+            setOpacity(0.5);
+          }}
+          onMouseOut={(e) => {
+            setOpacity(1);
+          }}
+        ></Radar>
+        <Tooltip content={<CustomTooltip data={tooltipData} />} />
       </RadarChart>
     </ResponsiveContainer>
   );

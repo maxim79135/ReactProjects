@@ -9,6 +9,11 @@
             "displayName": "Measure Data",
             "name": "measure",
             "kind": "Measure"
+        },
+        {
+            "displayName": "ToolTip Data",
+            "name": "tooltip",
+            "kind": "Measure"
         }
     ],
     "objects": {
@@ -47,7 +52,7 @@
                         "fill": {}
                     }
                 },
-                 "fontSize": {
+                "fontSize": {
                     "displayName": "Text Size",
                     "type": {
                         "formatting": {
@@ -74,6 +79,11 @@
                         {
                             "bind": {
                                 "to": "measure"
+                            }
+                        }, 
+                        {
+                            "bind": {
+                                "to": "tooltip"
                             }
                         }
                     ]
