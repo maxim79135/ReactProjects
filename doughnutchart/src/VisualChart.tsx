@@ -7,20 +7,15 @@ export interface State {
   width?: number;
   height?: number;
   size?: number;
-  category: string[];
-  values: string[];
+  chartData;
   clickLegend: (col, multiSelect) => void;
   countTooltipData: number;
-  tooltipData: { name: string; values: [] }[];
-  maxValue?;
 }
 
 const initialState: State = {
-  category: [],
-  values: [],
+  chartData: [],
   clickLegend: null,
   countTooltipData: 0,
-  tooltipData: [],
 };
 
 export class VisualChart extends React.Component<State> {
@@ -53,36 +48,17 @@ export class VisualChart extends React.Component<State> {
       width,
       height,
       size,
-      values,
-      category,
+      chartData,
       clickLegend,
       countTooltipData,
-      tooltipData,
-      maxValue,
     } = this.state;
 
-    const chartData = category
-      .map((v, i) => {
-        return {
-          category: v,
-          value: Number(values[i]),
-          id: i,
-        };
-      })
-      .sort((a, b) => (a.category > b.category ? 1 : -1));
+    if (this.state !== initialState) {
+      console.log(chartData);
 
-    console.log(chartData);
-    console.log(tooltipData);
-
-    return (
-      <_Radar
-        data={chartData}
-        size={size}
-        clickLegend={clickLegend}
-        max_value={maxValue}
-        tooltipData={tooltipData}
-      />
-    );
+      return <_Radar data={chartData} size={size} clickLegend={clickLegend} />;
+    }
+    return null;
   }
 }
 

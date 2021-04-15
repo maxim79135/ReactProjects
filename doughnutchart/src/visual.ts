@@ -38,7 +38,7 @@ import DataView = powerbi.DataView;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
 import IViewPort = powerbi.IViewport;
 import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
-import PrimitiveValue = powerbi.PrimitiveValue;
+import DataViewValueColumns = powerbi.DataViewValueColumns;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 
@@ -59,6 +59,7 @@ export class Visual implements IVisual {
   private viewport: IViewPort;
   private reactRoot: React.ComponentElement<any, any>;
   private category: DataViewCategoryColumn;
+  private values: DataViewValueColumns;
   private selectionManager: ISelectionManager;
   private host: IVisualHost;
   private tooltipServiceWrapper: ITooltipServiceWrapper;
@@ -85,33 +86,30 @@ export class Visual implements IVisual {
       const width = this.viewport.width;
       const height = this.viewport.height;
       const size = Math.min(height, width);
-      var countTooltipData = 0;
-      var tooltipData = [];
-
       this.category = options.dataViews[0].categorical.categories[0];
-      const values = options.dataViews[0].categorical.values[0];
+      this.values = options.dataViews[0].categorical.values;
 
-      const _category = this.category.values.map((value) => value.toString());
-      const _values = values.values.map((value) => value.toString());
-      const maxValue = options.dataViews[0].categorical.values[0].maxLocal;
-
-      countTooltipData = options.dataViews[0].categorical.values.length - 1;
-      if (countTooltipData < 0) countTooltipData = 0;
-      for (let i = 0; i < countTooltipData; i++) {
-        tooltipData.push({
-          name:
-            options.dataViews[0].categorical.values[i + 1].source.displayName,
-          values: options.dataViews[0].categorical.values[i + 1].values
-            .map((v, i) => {
-              return {
-                category: _category[i],
-                value: v,
-                id: i,
-              };
-            })
-            .sort((a, b) => (a.category > b.category ? 1 : -1)),
+      const chartData = [];
+      var countTooltipData = 0;
+      this.category.values.map((v, i) => {
+        chartData.push({
+          category: v,
+          id: i,
+          nameOfValues: this.values
+            .filter((v) => v.source.roles["measure"])
+            .map((v) => v.source.displayName),
+          nameOfTooltips: this.values
+            .filter((v) => v.source.roles["tooltip"])
+            .map((v) => v.source.displayName),
         });
-      }
+        this.values.map(
+          (v) => (chartData[i][v.source.displayName] = v.values[i])
+        );
+      });
+      chartData.sort((a, b) => {
+        if (a.category > b.category) return 1;
+        else return -1;
+      });
 
       // this.tooltipServiceWrapper.addTooltip()
 
@@ -119,15 +117,10 @@ export class Visual implements IVisual {
         width: width,
         height: height,
         size: size,
-        category: _category,
-        values: _values,
+        chartData: chartData,
         clickLegend: this.clickLegend,
         countTooltipData: countTooltipData,
-        tooltipData: tooltipData,
-        maxValue: maxValue,
       });
-
-      console.log(this.reactRoot);
     }
   }
 

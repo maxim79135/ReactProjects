@@ -12,13 +12,17 @@ import {
 
 function CustomTooltip(e) {
   const { active, label, payload, data } = e;
+  const nameOfTooltips = data[0].nameOfTooltips;
+
   if (active) {
+    console.log(e);
+
     return (
       <div className="custom-tooltip">
         <p className="label">{`${label} : ${payload[0].value}`}</p>
-        {data.map((v, i) => (
+        {nameOfTooltips.map((v, i) => (
           <p className="tooltip" key={i}>
-            {`${v.name} : ${v.values[payload[0].payload.id].value}`}
+            {`${v} : ${data[payload[0].payload.id][v]}`}
           </p>
         ))}
       </div>
@@ -28,11 +32,7 @@ function CustomTooltip(e) {
 }
 
 function _Radar(props) {
-  const { data, size, clickLegend, max_value, tooltipData } = props;
-  const [opacity, setOpacity] = React.useState(1);
-  const [angleTooltip, setAngleTooltip] = React.useState(false);
-
-  console.log(data);
+  const { data, size, clickLegend } = props;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -42,7 +42,6 @@ function _Radar(props) {
         data={data}
         onClick={(e, event) => {
           if (e !== null) {
-            console.log(e);
             const _value = e.activeLabel;
             var id;
             data.forEach((v, index) => {
@@ -67,22 +66,20 @@ function _Radar(props) {
           }}
         />
         <PolarRadiusAxis angle={90} />
-        <Radar
-          dataKey="value"
-          cx="50%"
-          cy="50%"
-          fill="#8884d8"
-          fillOpacity={opacity}
-          onMouseEnter={(e) => {
-            setOpacity(0.5);
-          }}
-          onMouseOut={(e) => {
-            setOpacity(1);
-          }}
-          dot={{ r: 5 }}
-          activeDot={false}
-        ></Radar>
-        <Tooltip content={<CustomTooltip data={tooltipData} />} />
+        {data[0].nameOfValues.map((v) => (
+          <Radar
+            dataKey={v}
+            cx="50%"
+            cy="50%"
+            fill="#8884d8"
+            activeDot={false}
+          ></Radar>
+        ))}
+        <Legend />
+        <Tooltip
+          animationDuration={800}
+          content={<CustomTooltip data={data} />}
+        />
       </RadarChart>
     </ResponsiveContainer>
   );
