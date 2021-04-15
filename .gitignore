@@ -9,3 +9,7 @@ reactCircleCard/webpack.statistics.prod.html
 doughnutchart/webpack.statistics.prod.html
 doughnutchart/webpack.statistics.dev.html
 doughnutchart/package-lock.json
+
+radarchart/webpack.statistics.dev.html
+
+radarchart/webpack.statistics.prod.html

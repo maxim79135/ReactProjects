@@ -1,6 +1,4 @@
 import * as React from "react";
-import DoughnutChart from "./DoughnutChart";
-import _Pie from "./Pie";
 import _Radar from "./Radar";
 
 export interface State {
