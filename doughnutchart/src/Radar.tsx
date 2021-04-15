@@ -57,7 +57,6 @@ function _Radar(props) {
           dataKey="category"
           onClick={(e) => {
             if (e !== null) {
-              console.log(e);
               const _value = e.value;
               var id;
               data.forEach((v, index) => {
@@ -65,9 +64,6 @@ function _Radar(props) {
               });
               clickLegend(id);
             }
-          }}
-          onMouseEnter={(e) => {
-            console.log(e);
           }}
         />
         <PolarRadiusAxis angle={90} />
@@ -83,6 +79,8 @@ function _Radar(props) {
           onMouseOut={(e) => {
             setOpacity(1);
           }}
+          dot={{ r: 5 }}
+          activeDot={false}
         ></Radar>
         <Tooltip content={<CustomTooltip data={tooltipData} />} />
       </RadarChart>

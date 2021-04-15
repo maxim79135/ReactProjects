@@ -42,6 +42,11 @@ import PrimitiveValue = powerbi.PrimitiveValue;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
 
+import {
+  createTooltipServiceWrapper,
+  ITooltipServiceWrapper,
+} from "powerbi-visuals-utils-tooltiputils";
+
 import { VisualSettings } from "./settings";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
@@ -56,6 +61,7 @@ export class Visual implements IVisual {
   private category: DataViewCategoryColumn;
   private selectionManager: ISelectionManager;
   private host: IVisualHost;
+  private tooltipServiceWrapper: ITooltipServiceWrapper;
 
   constructor(options: VisualConstructorOptions) {
     this.reactRoot = React.createElement(VisualChart, {});
@@ -63,8 +69,12 @@ export class Visual implements IVisual {
     this.host = options.host;
     this.selectionManager = options.host.createSelectionManager();
 
-    this.clickLegend = this.clickLegend.bind(this);
+    this.tooltipServiceWrapper = createTooltipServiceWrapper(
+      this.host.tooltipService,
+      options.element
+    );
 
+    this.clickLegend = this.clickLegend.bind(this);
     ReactDOM.render(this.reactRoot, this.target);
   }
 
@@ -103,6 +113,8 @@ export class Visual implements IVisual {
         });
       }
 
+      // this.tooltipServiceWrapper.addTooltip()
+
       VisualChart.update({
         width: width,
         height: height,
@@ -114,6 +126,8 @@ export class Visual implements IVisual {
         tooltipData: tooltipData,
         maxValue: maxValue,
       });
+
+      console.log(this.reactRoot);
     }
   }
 
