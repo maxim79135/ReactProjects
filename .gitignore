@@ -6,4 +6,6 @@ dist
 reactCircleCard/webpack.statistics.dev.html
 
 reactCircleCard/webpack.statistics.prod.html
-webpack*
+doughnutchart/webpack.statistics.prod.html
+doughnutchart/webpack.statistics.dev.html
+doughnutchart/package-lock.json
