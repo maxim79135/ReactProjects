@@ -82,6 +82,9 @@ export class Visual implements IVisual {
   public update(options: VisualUpdateOptions) {
     if (options.dataViews && options.dataViews[0]) {
       this.viewport = options.viewport;
+      this.settings = VisualSettings.parse<VisualSettings>(
+        options.dataViews[0]
+      );
 
       const width = this.viewport.width;
       const height = this.viewport.height;
