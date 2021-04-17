@@ -6,6 +6,7 @@ export interface State {
   height?: number;
   size?: number;
   chartData;
+  color?: string;
   clickLegend: (col, multiSelect) => void;
   countTooltipData: number;
 }
@@ -49,12 +50,20 @@ export class VisualChart extends React.Component<State> {
       chartData,
       clickLegend,
       countTooltipData,
+      color,
     } = this.state;
 
     if (this.state !== initialState) {
       console.log(chartData);
 
-      return <_Radar data={chartData} size={size} clickLegend={clickLegend} />;
+      return (
+        <_Radar
+          data={chartData}
+          size={size}
+          clickLegend={clickLegend}
+          color={color}
+        />
+      );
     }
     return null;
   }

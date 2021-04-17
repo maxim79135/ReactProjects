@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  Label,
 } from "recharts";
 
 function CustomTooltip(e) {
@@ -15,8 +16,6 @@ function CustomTooltip(e) {
   const nameOfTooltips = data[0].nameOfTooltips;
 
   if (active) {
-    console.log(e);
-
     return (
       <div className="custom-tooltip">
         <p className="label">{`${label} : ${payload[0].value}`}</p>
@@ -32,7 +31,33 @@ function CustomTooltip(e) {
 }
 
 function _Radar(props) {
-  const { data, size, clickLegend } = props;
+  const { data, size, clickLegend, color } = props;
+  const [selectedAngleAxis, setSelectedAngleAxis] = React.useState([]);
+
+  function customTick({ payload, x, y, textAnchor, stroke, radius }) {
+    console.log(selectedAngleAxis);
+
+    var fontWeight = "normal";
+    if (selectedAngleAxis.find((v) => v === payload.value) !== undefined)
+      fontWeight = "bold";
+    return (
+      <g className="recharts-layer recharts-polar-angle-axis-tick">
+        <text
+          radius={radius}
+          stroke={stroke}
+          fontWeight={fontWeight}
+          x={x}
+          y={y}
+          className="recharts-text recharts-polar-angle-axis-tick-value"
+          text-anchor={textAnchor}
+        >
+          <tspan x={x} dy="0em">
+            {payload.value}
+          </tspan>
+        </text>
+      </g>
+    );
+  }
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -48,12 +73,21 @@ function _Radar(props) {
               if (v.category == _value) id = v.id;
             });
             clickLegend(id, event.ctrlKey);
+
+            var new_array = selectedAngleAxis;
+            const index = new_array.findIndex((e) => e === _value);
+            if (index == -1) {
+              if (!event.ctrlKey) new_array = [];
+              new_array.push(_value);
+            } else new_array.splice(index, 1);
+            setSelectedAngleAxis(new_array);
           }
         }}
       >
         <PolarGrid gridType="circle" />
         <PolarAngleAxis
           dataKey="category"
+          tick={customTick}
           onClick={(e) => {
             if (e !== null) {
               const _value = e.value;
@@ -65,17 +99,17 @@ function _Radar(props) {
             }
           }}
         />
-        <PolarRadiusAxis angle={90} />
+        {/* <PolarRadiusAxis angle={90} axisLine={false} /> */}
         {data[0].nameOfValues.map((v) => (
           <Radar
             dataKey={v}
             cx="50%"
             cy="50%"
-            fill="#8884d8"
+            fill={color}
             activeDot={false}
           ></Radar>
         ))}
-        <Legend />
+        {/* <Legend /> */}
         <Tooltip
           animationDuration={800}
           content={<CustomTooltip data={data} />}

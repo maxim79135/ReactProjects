@@ -123,6 +123,7 @@ export class Visual implements IVisual {
         chartData: chartData,
         clickLegend: this.clickLegend,
         countTooltipData: countTooltipData,
+        color: this.settings.dataPoint.fill,
       });
     }
   }
