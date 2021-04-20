@@ -54,8 +54,6 @@ export class VisualChart extends React.Component<State> {
     } = this.state;
 
     if (this.state !== initialState) {
-      console.log(chartData);
-
       return (
         <_Radar
           data={chartData}
