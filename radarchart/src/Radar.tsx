@@ -73,14 +73,19 @@ function _Radar(props) {
               if (v.category == _value) id = v.id;
             });
             clickLegend(id, event.ctrlKey);
-
-            var new_array = selectedAngleAxis;
-            const index = new_array.findIndex((e) => e === _value);
-            if (index == -1) {
-              if (!event.ctrlKey) new_array = [];
-              new_array.push(_value);
-            } else new_array.splice(index, 1);
-            setSelectedAngleAxis(new_array);
+            setSelectedAngleAxis((prev_state) => {
+              const index = prev_state.findIndex((e) => e === _value);
+              if (index == -1) {
+                if (!event.ctrlKey) prev_state = [];
+                prev_state.push(_value);
+              } else {
+                if (!event.ctrlKey && prev_state.length == 1) return [];
+                
+                if (!event.ctrlKey) return [_value];
+                else prev_state.splice(index, 1);
+              }
+              return prev_state;
+            });
           }
         }}
       >
