@@ -14,10 +14,10 @@ import {
 function CustomTooltip(e) {
   const { active, label, payload, data } = e;
   const nameOfTooltips = data[0].nameOfTooltips;
-
   if (active) {
     return (
       <div className="custom-tooltip">
+        <h1 className="header"></h1>
         <p className="label">{`${label} : ${payload[0].value}`}</p>
         {nameOfTooltips.map((v, i) => (
           <p className="tooltip" key={i}>
@@ -34,9 +34,11 @@ function _Radar(props) {
   const { data, size, clickLegend, color } = props;
   const [selectedAngleAxis, setSelectedAngleAxis] = React.useState([]);
 
-  function customTick({ payload, x, y, textAnchor, stroke, radius }) {
-    console.log(selectedAngleAxis);
+  if (data.length == 0) return null;
+  console.log(data);
+  
 
+  function customTick({ payload, x, y, textAnchor, stroke, radius }) {
     var fontWeight = "normal";
     if (selectedAngleAxis.find((v) => v === payload.value) !== undefined)
       fontWeight = "bold";
@@ -80,10 +82,12 @@ function _Radar(props) {
                 prev_state.push(_value);
               } else {
                 if (!event.ctrlKey && prev_state.length == 1) return [];
-                
+
                 if (!event.ctrlKey) return [_value];
                 else prev_state.splice(index, 1);
               }
+              console.log(prev_state);
+
               return prev_state;
             });
           }
@@ -103,21 +107,21 @@ function _Radar(props) {
               clickLegend(id);
             }
           }}
-        />
-        {/* <PolarRadiusAxis angle={90} axisLine={false} /> */}
-        {data[0].nameOfValues.map((v) => (
+        ></PolarAngleAxis>
+        {data[0].nameOfValues.map((v, i) => (
           <Radar
+            name={v}
             dataKey={v}
             cx="50%"
             cy="50%"
-            fill={color}
+            fill={data[0].colors[i].value}
             activeDot={false}
           ></Radar>
         ))}
         {/* <Legend /> */}
         <Tooltip
           animationDuration={800}
-          content={<CustomTooltip data={data} />}
+          // content={<CustomTooltip data={data} />}
         />
       </RadarChart>
     </ResponsiveContainer>

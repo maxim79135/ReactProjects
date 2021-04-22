@@ -41,6 +41,7 @@ import DataViewCategoryColumn = powerbi.DataViewCategoryColumn;
 import DataViewValueColumns = powerbi.DataViewValueColumns;
 import ISelectionManager = powerbi.extensibility.ISelectionManager;
 import IVisualHost = powerbi.extensibility.visual.IVisualHost;
+import ISelectionId = powerbi.visuals.ISelectionId;
 
 import {
   createTooltipServiceWrapper,
@@ -62,6 +63,7 @@ export class Visual implements IVisual {
   private values: DataViewValueColumns;
   private selectionManager: ISelectionManager;
   private host: IVisualHost;
+  private chartData = [];
   private tooltipServiceWrapper: ITooltipServiceWrapper;
 
   constructor(options: VisualConstructorOptions) {
@@ -92,35 +94,45 @@ export class Visual implements IVisual {
       this.category = options.dataViews[0].categorical.categories[0];
       this.values = options.dataViews[0].categorical.values;
 
-      const chartData = [];
       var countTooltipData = 0;
       this.category.values.map((v, i) => {
-        chartData.push({
+        this.chartData.push({
           category: v,
           id: i,
           nameOfValues: this.values
             .filter((v) => v.source.roles["measure"])
-            .map((v) => v.source.displayName),
+            .map((v) => v.source.groupName),
+          colors: this.values
+            .filter((v) => v.source.roles["measure"])
+            .map((v) =>
+              this.host.colorPalette.getColor(String(v.source.groupName))
+            ),
           nameOfTooltips: this.values
             .filter((v) => v.source.roles["tooltip"])
             .map((v) => v.source.displayName),
         });
-        this.values.map(
-          (v) => (chartData[i][v.source.displayName] = v.values[i])
-        );
+        this.values
+          .filter((v) => v.source.roles["measure"])
+          .map(
+            (v) => (this.chartData[i][String(v.source.groupName)] = v.values[i])
+          );
+        this.values
+          .filter((v) => v.source.roles["tooltip"])
+          .map(
+            (v) =>
+              (this.chartData[i][String(v.source.displayName)] = v.values[i])
+          );
       });
-      chartData.sort((a, b) => {
+      this.chartData.sort((a, b) => {
         if (a.category > b.category) return 1;
         else return -1;
       });
-
-      // this.tooltipServiceWrapper.addTooltip()
 
       VisualChart.update({
         width: width,
         height: height,
         size: size,
-        chartData: chartData,
+        chartData: this.chartData,
         clickLegend: this.clickLegend,
         countTooltipData: countTooltipData,
         color: this.settings.dataPoint.fill,
@@ -136,10 +148,6 @@ export class Visual implements IVisual {
     this.selectionManager.select(categorySelectionId, multiSelect);
   }
 
-  private static parseSettings(dataView: DataView): VisualSettings {
-    return <VisualSettings>VisualSettings.parse(dataView);
-  }
-
   /**
    * This function gets called for each of the objects defined in the capabilities files and allows you to select which of the
    * objects and properties you want to expose to the users in the property pane.
@@ -148,9 +156,35 @@ export class Visual implements IVisual {
   public enumerateObjectInstances(
     options: EnumerateVisualObjectInstancesOptions
   ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
-    return VisualSettings.enumerateObjectInstances(
+    if (!this.settings || !this.chartData) return [];
+
+    const dataPointSettings = this.settings.dataPoint;
+
+    const instances: VisualObjectInstance[] = (VisualSettings.enumerateObjectInstances(
       this.settings || VisualSettings.getDefault(),
       options
-    );
+    ) as VisualObjectInstanceEnumerationObject).instances;
+
+    if (!dataPointSettings.showAllDataPoints) return instances;
+
+    this.chartData[0].colors.map((v, i) => {
+      let colorInstances: VisualObjectInstance = {
+        objectName: "dataPoint",
+        displayName: "123",
+        selector: null,
+        properties: {
+          fill: { solid: { color: v.value } },
+        },
+      };
+      console.log(instances);
+
+      console.log(colorInstances);
+
+      instances.push(colorInstances);
+    });
+    console.log(123);
+    console.log(instances);
+
+    return instances;
   }
 }

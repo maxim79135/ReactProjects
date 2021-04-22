@@ -53,17 +53,16 @@ export class VisualChart extends React.Component<State> {
       color,
     } = this.state;
 
-    if (this.state !== initialState) {
-      return (
-        <_Radar
-          data={chartData}
-          size={size}
-          clickLegend={clickLegend}
-          color={color}
-        />
-      );
-    }
-    return null;
+    // if (this.state !== initialState) {
+    return (
+      <_Radar
+        data={chartData}
+        size={size}
+        clickLegend={clickLegend}
+        color={color}
+      />
+    );
+    // } else return null;
   }
 }
 

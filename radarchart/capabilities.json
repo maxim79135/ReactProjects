@@ -6,6 +6,11 @@
             "kind": "Grouping"
         },
         {
+            "displayName": "Series",
+            "name": "series",
+            "kind": "Grouping"
+        },
+        {
             "displayName": "Measure Data",
             "name": "measure",
             "kind": "Measure"
@@ -45,26 +50,19 @@
                             }
                         }
                     }
-                },
-                "fillRule": {
-                    "displayName": "Color saturation",
-                    "type": {
-                        "fill": {}
-                    }
-                },
-                "fontSize": {
-                    "displayName": "Text Size",
-                    "type": {
-                        "formatting": {
-                            "fontSize": true
-                        }
-                    }
                 }
             }
         }
     },
     "dataViewMappings": [
         {
+            "conditions": [
+                {
+                    "measure": {
+                        "max": 1
+                    }
+                }
+            ],
             "categorical": {
                 "categories": {
                     "for": {
@@ -75,18 +73,24 @@
                     }
                 },
                 "values": {
-                    "select": [
-                        {
-                            "bind": {
-                                "to": "measure"
+                    "group": {
+                        "by": "series",
+                        "select": [
+                            {
+                                "bind": {
+                                    "to": "measure"
+                                }
+                            },
+                            {
+                                "bind": {
+                                    "to": "tooltip"
+                                }
                             }
-                        }, 
-                        {
-                            "bind": {
-                                "to": "tooltip"
-                            }
+                        ],
+                        "dataReductionAlgorithm": {
+                            "top": {}
                         }
-                    ]
+                    }
                 }
             }
         }
