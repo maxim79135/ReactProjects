@@ -68,6 +68,7 @@ export class Visual implements IVisual {
       const size = Math.min(height, width);
       this.category = options.dataViews[0].categorical.categories[0];
       this.values = options.dataViews[0].categorical.values;
+      this.chartData = [];
 
       var countTooltipData = 0;
       this.category.values.map((v, i) => {
@@ -76,21 +77,29 @@ export class Visual implements IVisual {
           id: i,
           nameOfValues: this.values
             .filter((v) => v.source.roles["measure"])
-            .map((v) => v.source.groupName),
+            .map((v) => {
+              if (v.source.groupName !== undefined) return v.source.groupName;
+              else return v.source.displayName;
+            }),
           colors: this.values
             .filter((v) => v.source.roles["measure"])
-            .map((v) =>
-              this.host.colorPalette.getColor(String(v.source.groupName))
-            ),
+            .map((v, index) => {
+              return this.host.colorPalette.getColor(String(index + 1));
+            }),
           nameOfTooltips: this.values
             .filter((v) => v.source.roles["tooltip"])
             .map((v) => v.source.displayName),
         });
         this.values
           .filter((v) => v.source.roles["measure"])
-          .map(
-            (v) => (this.chartData[i][String(v.source.groupName)] = v.values[i])
-          );
+          .map((v) => {
+            if (v.source.groupName !== undefined)
+              return (this.chartData[i][String(v.source.groupName)] =
+                v.values[i]);
+            else
+              return (this.chartData[i][String(v.source.displayName)] =
+                v.values[i]);
+          });
         this.values
           .filter((v) => v.source.roles["tooltip"])
           .map(
@@ -103,6 +112,8 @@ export class Visual implements IVisual {
         else return -1;
       });
 
+      console.log(this.chartData);
+
       VisualChart.update({
         width: width,
         height: height,
@@ -110,7 +121,7 @@ export class Visual implements IVisual {
         chartData: this.chartData,
         clickLegend: this.clickLegend,
         countTooltipData: countTooltipData,
-        color: this.settings.dataPoint.fill,
+        colors: this.chartData[0].colors,
       });
     }
   }
@@ -130,29 +141,38 @@ export class Visual implements IVisual {
    */
   public enumerateObjectInstances(
     options: EnumerateVisualObjectInstancesOptions
-  ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
+  ): VisualObjectInstance[] {
     if (!this.settings || !this.chartData) return [];
 
     const dataPointSettings = this.settings.dataPoint;
 
-    const instances: VisualObjectInstance[] = (VisualSettings.enumerateObjectInstances(
-      this.settings || VisualSettings.getDefault(),
-      options
-    ) as VisualObjectInstanceEnumerationObject).instances;
+    let instances: VisualObjectInstance[] = [
+      {
+        objectName: "dataPoint",
+        displayName: "Data colors",
+        selector: null,
+        properties: {
+          defaultColor: dataPointSettings.defaultColor,
+          showAllDataPoints: dataPointSettings.showAllDataPoints,
+        },
+      },
+    ];
 
     if (!dataPointSettings.showAllDataPoints) return instances;
 
     this.chartData[0].colors.map((v, i) => {
-      let colorInstances: VisualObjectInstance = {
-        objectName: "dataPoint",
-        displayName: "123",
+      let colorInstance: VisualObjectInstance = {
+        objectName: "datapoint",
+        displayName: "Data colors",
         selector: null,
         properties: {
           fill: { solid: { color: v.value } },
         },
       };
-      instances.push(colorInstances);
+      instances.push(colorInstance);
     });
+
+    console.log(instances);
 
     return instances;
   }
