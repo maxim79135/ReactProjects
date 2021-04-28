@@ -40,15 +40,39 @@
                     "type": {
                         "bool": true
                     }
-                },
-                "fill": {
-                    "displayName": "Fill",
+                }
+            }
+        },
+        "labelAxis": {
+            "displayName": "Axis",
+            "properties": {
+                "isEnableTick": {
+                    "displayName": "Show tick",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
+                        "bool": true
+                    }
+                },
+                "maxValue": {
+                    "displayName": "Max value",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "minValue": {
+                    "displayName": "Min value",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "shape": {
+            "displayName": "Shape",
+            "properties": {
+                "opacity": {
+                    "displayName": "Opacity of shape",
+                    "type": {
+                        "numeric": true
                     }
                 }
             }

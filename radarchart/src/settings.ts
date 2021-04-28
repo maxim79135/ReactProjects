@@ -31,17 +31,23 @@ import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
 export class VisualSettings extends DataViewObjectsParser {
   public dataPoint: dataPointSettings = new dataPointSettings();
+  public labelAxis: labelAxisSettings = new labelAxisSettings();
+  public shape: shapeSettings = new shapeSettings();
 }
 
 export class dataPointSettings {
   // Default color
   public defaultColor: string = "";
   // Show all
-  public showAllDataPoints: boolean = true;
-  // Fill
-  public fill: string = "";
-  // Color saturation
-  public fillRule: string = "";
-  // Text Size
-  public fontSize: number = 12;
+  public showAllDataPoints: boolean = false;
+}
+
+export class labelAxisSettings {
+  public isEnableTick: boolean = false;
+  public maxValue: number = 10;
+  public minValue: number = 0;
+}
+
+export class shapeSettings {
+  public opacity: number = 1;
 }

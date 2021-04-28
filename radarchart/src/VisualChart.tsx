@@ -1,14 +1,16 @@
 import * as React from "react";
 import _Radar from "./Radar";
+import { VisualSettings } from "./settings";
 
 export interface State {
   width?: number;
   height?: number;
   size?: number;
   chartData;
-  color?: string;
+  colors?: { value: string }[];
   clickLegend: (col, multiSelect) => void;
   countTooltipData: number;
+  settings?: VisualSettings;
 }
 
 const initialState: State = {
@@ -50,7 +52,8 @@ export class VisualChart extends React.Component<State> {
       chartData,
       clickLegend,
       countTooltipData,
-      color,
+      colors,
+      settings,
     } = this.state;
 
     // if (this.state !== initialState) {
@@ -59,7 +62,8 @@ export class VisualChart extends React.Component<State> {
         data={chartData}
         size={size}
         clickLegend={clickLegend}
-        color={color}
+        colors={colors}
+        settings={settings}
       />
     );
     // } else return null;

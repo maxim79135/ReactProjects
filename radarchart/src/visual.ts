@@ -84,7 +84,9 @@ export class Visual implements IVisual {
           colors: this.values
             .filter((v) => v.source.roles["measure"])
             .map((v, index) => {
-              return this.host.colorPalette.getColor(String(index + 1));
+              if (v.source.groupName === undefined)
+                return this.settings.dataPoint.defaultColor;
+              else return this.host.colorPalette.getColor(String(index + 1));
             }),
           nameOfTooltips: this.values
             .filter((v) => v.source.roles["tooltip"])
@@ -108,11 +110,14 @@ export class Visual implements IVisual {
           );
       });
       this.chartData.sort((a, b) => {
-        if (a.category > b.category) return 1;
-        else return -1;
+        const [name_a, value_a] = String(a.category).split("-");
+        const [name_b, value_b] = String(a.category).split("-");
+        if (name_a > name_b && Number(value_a) > Number(value_b)) return 1;
+        if (name_a.length == name_b.length) {
+          if (Number(value_a) > Number(value_b)) return 1;
+          else return -1;
+        } else return -1;
       });
-
-      console.log(this.chartData);
 
       VisualChart.update({
         width: width,
@@ -122,6 +127,7 @@ export class Visual implements IVisual {
         clickLegend: this.clickLegend,
         countTooltipData: countTooltipData,
         colors: this.chartData[0].colors,
+        settings: this.settings,
       });
     }
   }
@@ -141,39 +147,43 @@ export class Visual implements IVisual {
    */
   public enumerateObjectInstances(
     options: EnumerateVisualObjectInstancesOptions
-  ): VisualObjectInstance[] {
-    if (!this.settings || !this.chartData) return [];
+  ): VisualObjectInstance[] | VisualObjectInstanceEnumerationObject {
+    return VisualSettings.enumerateObjectInstances(
+      this.settings || VisualSettings.getDefault(),
+      options
+    );
+    // if (!this.settings || !this.chartData) return [];
 
-    const dataPointSettings = this.settings.dataPoint;
+    // const dataPointSettings = this.settings.dataPoint;
 
-    let instances: VisualObjectInstance[] = [
-      {
-        objectName: "dataPoint",
-        displayName: "Data colors",
-        selector: null,
-        properties: {
-          defaultColor: dataPointSettings.defaultColor,
-          showAllDataPoints: dataPointSettings.showAllDataPoints,
-        },
-      },
-    ];
+    // let instances: VisualObjectInstance[] = [
+    //   {
+    //     objectName: "dataPoint",
+    //     displayName: "Data colors",
+    //     selector: null,
+    //     properties: {
+    //       defaultColor: dataPointSettings.defaultColor,
+    //       showAllDataPoints: dataPointSettings.showAllDataPoints,
+    //     },
+    //   },
+    // ];
 
-    if (!dataPointSettings.showAllDataPoints) return instances;
+    // if (!dataPointSettings.showAllDataPoints) return instances;
 
-    this.chartData[0].colors.map((v, i) => {
-      let colorInstance: VisualObjectInstance = {
-        objectName: "datapoint",
-        displayName: "Data colors",
-        selector: null,
-        properties: {
-          fill: { solid: { color: v.value } },
-        },
-      };
-      instances.push(colorInstance);
-    });
+    // this.chartData[0].colors.map((v, i) => {
+    //   let colorInstance: VisualObjectInstance = {
+    //     objectName: "datapoint",
+    //     displayName: "Data colors",
+    //     selector: null,
+    //     properties: {
+    //       fill: { solid: { color: v.value } },
+    //     },
+    //   };
+    //   instances.push(colorInstance);
+    // });
 
-    console.log(instances);
+    // console.log(instances);
 
-    return instances;
+    // return instances;
   }
 }

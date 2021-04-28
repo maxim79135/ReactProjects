@@ -31,12 +31,10 @@ function CustomTooltip(e) {
 }
 
 function _Radar(props) {
-  const { data, size, clickLegend, color } = props;
+  const { data, size, clickLegend, colors, settings } = props;
   const [selectedAngleAxis, setSelectedAngleAxis] = React.useState([]);
 
   if (data.length == 0) return null;
-  console.log(data);
-  
 
   function customTick({ payload, x, y, textAnchor, stroke, radius }) {
     var fontWeight = "normal";
@@ -94,6 +92,11 @@ function _Radar(props) {
         }}
       >
         <PolarGrid gridType="circle" />
+        <PolarRadiusAxis
+          angle={90}
+          tick={settings.labelAxis.isEnableTick}
+          domain={[settings.labelAxis.minValue, settings.labelAxis.maxValue]}
+        />
         <PolarAngleAxis
           dataKey="category"
           tick={customTick}
@@ -114,7 +117,8 @@ function _Radar(props) {
             dataKey={v}
             cx="50%"
             cy="50%"
-            fill={data[0].colors[i].value}
+            fill={colors[i]}
+            fillOpacity={settings.shape.opacity}
             activeDot={false}
           ></Radar>
         ))}
