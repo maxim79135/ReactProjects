@@ -1,3 +1,5 @@
 [submodule "PowerBI-Clustered-Bar-Chart"]
 	path = PowerBI-Clustered-Bar-Chart
 	url = https://github.com/akvelon/PowerBI-Clustered-Bar-Chart.git
+[submodule "sunburst"]
+	url = https://github.com/microsoft/powerbi-visuals-sunburst
