@@ -46,6 +46,7 @@ function _Radar(props) {
           radius={radius}
           stroke={stroke}
           fontWeight={fontWeight}
+          fontSize={settings.labelAxis.fontSize}
           x={x}
           y={y}
           className="recharts-text recharts-polar-angle-axis-tick-value"
@@ -95,6 +96,8 @@ function _Radar(props) {
         <PolarRadiusAxis
           angle={90}
           tick={settings.labelAxis.isEnableTick}
+          tickCount={settings.labelAxis.tickCount}
+          fontSize={settings.labelAxis.fontSize}
           domain={[settings.labelAxis.minValue, settings.labelAxis.maxValue]}
         />
         <PolarAngleAxis
@@ -110,7 +113,7 @@ function _Radar(props) {
               clickLegend(id);
             }
           }}
-        ></PolarAngleAxis>
+        />
         {data[0].nameOfValues.map((v, i) => (
           <Radar
             name={v}

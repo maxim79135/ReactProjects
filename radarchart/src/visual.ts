@@ -110,13 +110,15 @@ export class Visual implements IVisual {
           );
       });
       this.chartData.sort((a, b) => {
-        const [name_a, value_a] = String(a.category).split("-");
-        const [name_b, value_b] = String(a.category).split("-");
-        if (name_a > name_b && Number(value_a) > Number(value_b)) return 1;
-        if (name_a.length == name_b.length) {
-          if (Number(value_a) > Number(value_b)) return 1;
-          else return -1;
-        } else return -1;
+        if (a.category > b.category) return 1;
+        else return -1;
+        // const [name_a, value_a] = String(a.category).split("-");
+        // const [name_b, value_b] = String(a.category).split("-");
+        // if (name_a > name_b && Number(value_a) > Number(value_b)) return 1;
+        // if (name_a.length == name_b.length) {
+        //   if (Number(value_a) > Number(value_b)) return 1;
+        //   else return -1;
+        // } else return -1;
       });
 
       VisualChart.update({

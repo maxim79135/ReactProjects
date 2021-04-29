@@ -44,6 +44,8 @@ export class dataPointSettings {
 
 export class labelAxisSettings {
   public isEnableTick: boolean = false;
+  public tickCount: number = 5;
+  public fontSize: number = 10;
   public maxValue: number = 10;
   public minValue: number = 0;
 }
