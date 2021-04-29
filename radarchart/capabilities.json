@@ -52,6 +52,20 @@
                         "bool": true
                     }
                 },
+                "tickCount": {
+                    "displayName": "Number of tick",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
                 "maxValue": {
                     "displayName": "Max value",
                     "type": {
@@ -71,6 +85,12 @@
             "properties": {
                 "opacity": {
                     "displayName": "Opacity of shape",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "numberOfDigits": {
+                    "displayName": "Number of digits",
                     "type": {
                         "numeric": true
                     }

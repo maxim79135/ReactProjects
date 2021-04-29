@@ -86,7 +86,8 @@ export class Visual implements IVisual {
             .map((v, index) => {
               if (v.source.groupName === undefined)
                 return this.settings.dataPoint.defaultColor;
-              else return this.host.colorPalette.getColor(String(index + 1));
+              else
+                return this.host.colorPalette.getColor((index + 1).toString());
             }),
           nameOfTooltips: this.values
             .filter((v) => v.source.roles["tooltip"])
@@ -95,20 +96,28 @@ export class Visual implements IVisual {
         this.values
           .filter((v) => v.source.roles["measure"])
           .map((v) => {
+            const new_value = Number(
+              Number(v.values[i]).toFixed(this.settings.shape.numberOfDigits)
+            );
+
             if (v.source.groupName !== undefined)
-              return (this.chartData[i][String(v.source.groupName)] =
-                v.values[i]);
+              return (this.chartData[i][
+                v.source.groupName.toString()
+              ] = new_value);
             else
-              return (this.chartData[i][String(v.source.displayName)] =
-                v.values[i]);
+              return (this.chartData[i][
+                v.source.displayName.toString()
+              ] = new_value);
           });
         this.values
           .filter((v) => v.source.roles["tooltip"])
           .map(
             (v) =>
-              (this.chartData[i][String(v.source.displayName)] = v.values[i])
+              (this.chartData[i][v.source.displayName.toString()] = v.values[i])
           );
       });
+      console.log(this.chartData);
+
       this.chartData.sort((a, b) => {
         if (a.category > b.category) return 1;
         else return -1;

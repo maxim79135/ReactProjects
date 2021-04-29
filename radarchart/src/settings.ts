@@ -52,4 +52,5 @@ export class labelAxisSettings {
 
 export class shapeSettings {
   public opacity: number = 1;
+  public numberOfDigits: number = 2;
 }
