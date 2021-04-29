@@ -47,6 +47,7 @@ function _Radar(props) {
           stroke={stroke}
           fontWeight={fontWeight}
           fontSize={settings.labelAxis.fontSize}
+          fontFamily={settings.labelAxis.fontFamily}
           x={x}
           y={y}
           className="recharts-text recharts-polar-angle-axis-tick-value"
@@ -98,6 +99,7 @@ function _Radar(props) {
           tick={settings.labelAxis.isEnableTick}
           tickCount={settings.labelAxis.tickCount}
           fontSize={settings.labelAxis.fontSize}
+          fontFamily={settings.labelAxis.fontFamily}
           domain={[settings.labelAxis.minValue, settings.labelAxis.maxValue]}
         />
         <PolarAngleAxis

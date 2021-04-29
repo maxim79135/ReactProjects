@@ -46,6 +46,7 @@ export class labelAxisSettings {
   public isEnableTick: boolean = false;
   public tickCount: number = 5;
   public fontSize: number = 10;
+  public fontFamily: string = '"Times New Roman"';
   public maxValue: number = 10;
   public minValue: number = 0;
 }
