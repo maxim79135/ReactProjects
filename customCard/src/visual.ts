@@ -35,17 +35,43 @@ import EnumerateVisualObjectInstancesOptions = powerbi.EnumerateVisualObjectInst
 import VisualObjectInstance = powerbi.VisualObjectInstance;
 import DataView = powerbi.DataView;
 import VisualObjectInstanceEnumerationObject = powerbi.VisualObjectInstanceEnumerationObject;
+import IViewPort = powerbi.IViewport;
 
 import { VisualSettings } from "./settings";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+
+import Card from "./Card";
+
 export class Visual implements IVisual {
   private settings: VisualSettings;
+  private reactRoot: React.ComponentElement<any, any>;
+  private target: HTMLElement;
+  private viewport: IViewPort;
 
-  constructor(options: VisualConstructorOptions) {}
+  constructor(options: VisualConstructorOptions) {
+    this.reactRoot = React.createElement(Card, {});
+    this.target = options.element;
+
+    ReactDOM.render(this.reactRoot, this.target);
+  }
 
   public update(options: VisualUpdateOptions) {
     this.settings = Visual.parseSettings(
       options && options.dataViews && options.dataViews[0]
     );
+
+    if (options.dataViews && options.dataViews[0]) {
+      this.viewport = options.viewport;
+
+      const width = this.viewport.width;
+      const height = this.viewport.height;
+
+      Card.update({
+        width: width,
+        height: height,
+      });
+    }
   }
 
   private static parseSettings(dataView: DataView): VisualSettings {
