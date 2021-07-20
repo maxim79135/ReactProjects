@@ -1,13 +1,33 @@
 {
     "dataRoles": [
         {
-            "displayName": "Category Data",
+            "displayName": "Main measure",
+            "name": "main_measure",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Category",
             "name": "category",
             "kind": "Grouping"
         },
         {
-            "displayName": "Measure Data",
-            "name": "measure",
+            "displayName": "Measure for comparison 1",
+            "name": "measure_comparison_1",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Measure for comparison 2",
+            "name": "measure_comparison_2",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Measure for comparison 3",
+            "name": "measure_comparison_3",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "Tooltips",
+            "name": "tooltips",
             "kind": "Measure"
         }
     ],
@@ -37,6 +57,28 @@
     },
     "dataViewMappings": [
         {
+            "conditions": [
+                {
+                    "main_measure": {
+                        "max": 1
+                    },
+                    "category": {
+                        "max": 1
+                    },
+                    "measure_comparison_1": {
+                        "max": 1
+                    },
+                    "measure_comparison_2": {
+                        "max": 1
+                    },
+                    "measure_comparison_3": {
+                        "max": 1
+                    },
+                    "tooltips": {
+                        "max": 3
+                    }
+                }
+            ],
             "categorical": {
                 "categories": {
                     "for": {
@@ -50,7 +92,12 @@
                     "select": [
                         {
                             "bind": {
-                                "to": "measure"
+                                "to": "main_measure"
+                            }
+                        },
+                        {
+                            "bind": {
+                                "to": "tooltips"
                             }
                         }
                     ]
