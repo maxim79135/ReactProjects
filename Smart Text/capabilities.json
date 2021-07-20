@@ -1,0 +1,378 @@
+{
+   "dataRoles":[
+      {
+         "displayName":"Fields",
+         "displayNameKey":"dr_m_key1",
+         "name":"fields",
+         "kind":"Measure"
+      }
+   ],
+   "dataViewMappings":[
+      {
+         "table":{
+            "rows":{
+               "select":[
+                  {
+                     "for":{
+                        "in":"fields"
+                     }
+                  }
+               ]
+            }
+         }
+      }
+   ],
+   "objects":{
+      "textSettings":{
+         "displayName":"Text Settings",
+         "displayNameKey":"textSettings",
+         "properties":{
+            "pattern":{
+               "displayName":"Pattern",
+               "displayNameKey":"pattern",
+               "type":{
+                  "text":true
+               }
+            },
+            "fontColor":{
+               "displayName":"Font Color",
+               "displayNameKey":"fontColor",
+               "type":{
+                  "fill":{
+                     "solid":{
+                        "color":true
+                     }
+                  }
+               }
+            },
+            "fontSize":{
+               "displayName":"Text size",
+               "displayNameKey":"textSize",
+               "type":{
+                  "formatting":{
+                     "fontSize":true
+                  }
+               }
+            },
+            "fontFamily":{
+               "displayName":"Font family",
+               "displayNameKey":"fontFamily",
+               "type":{
+                  "enumeration":[
+                     {
+                        "displayName":"Arial",
+                        "value":"Arial"
+                     },
+                     {
+                        "displayName":"Arial Black",
+                        "value":"\"Arial Black\""
+                     },
+                     {
+                        "displayName":"Arial Unicode MS",
+                        "value":"\"Arial Unicode MS\""
+                     },
+                     {
+                        "displayName":"Calibri",
+                        "value":"Calibri"
+                     },
+                     {
+                        "displayName":"Cambria",
+                        "value":"Cambria"
+                     },
+                     {
+                        "displayName":"Cambria Math",
+                        "value":"\"Cambria Math\""
+                     },
+                     {
+                        "displayName":"Candara",
+                        "value":"Candara"
+                     },
+                     {
+                        "displayName":"Comic Sans MS",
+                        "value":"\"Comic Sans MS\""
+                     },
+                     {
+                        "displayName":"Consolas",
+                        "value":"Consolas"
+                     },
+                     {
+                        "displayName":"Constantia",
+                        "value":"Constantia"
+                     },
+                     {
+                        "displayName":"Corbel",
+                        "value":"Corbel"
+                     },
+                     {
+                        "displayName":"Courier New",
+                        "value":"\"Courier New\""
+                     },
+                     {
+                        "displayName":"DIN",
+                        "value":"wf_standard-font,helvetica,arial,sans-serif"
+                     },
+                     {
+                        "displayName":"Georgia",
+                        "value":"Georgia"
+                     },
+                     {
+                        "displayName":"Lucida Sans Unicode",
+                        "value":"\"Lucida Sans Unicode\""
+                     },
+                     {
+                        "displayName":"Segoe (Bold)",
+                        "value":"\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+                     },
+                     {
+                        "displayName":"Segoe UI",
+                        "value":"\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+                     },
+                     {
+                        "displayName":"Segoe UI Light",
+                        "value":"\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+                     },
+                     {
+                        "displayName":"Symbol",
+                        "value":"Symbol"
+                     },
+                     {
+                        "displayName":"Tahoma",
+                        "value":"Tahoma"
+                     },
+                     {
+                        "displayName":"Times New Roman",
+                        "value":"\"Times New Roman\""
+                     },
+                     {
+                        "displayName":"Trebuchet MS",
+                        "value":"\"Trebuchet MS\""
+                     },
+                     {
+                        "displayName":"Verdana",
+                        "value":"Verdana"
+                     },
+                     {
+                        "displayName":"Wingdings",
+                        "value":"Wingdings"
+                     }
+                  ]
+               }
+            },
+            "alignment":{
+               "displayName":"Alignment",
+               "displayNameKey":"alignment",
+               "type":{
+                  "formatting":{
+                     "alignment":true
+                  }
+               }
+            },
+            "isBold":{
+               "displayName":"Bold",
+               "displayNameKey":"bold",
+               "type":{
+                  "bool":true
+               }
+            },
+            "isItalic":{
+               "displayName":"Italic",
+               "displayNameKey":"italic",
+               "type":{
+                  "bool":true
+               }
+            }
+         }
+      },
+      "dataLabels":{
+         "displayName":"Data Labels",
+         "displayNameKey":"dataLabels",
+         "properties":{
+            "currentMeasureIndex":{
+               "displayName":"Current measure index",
+               "displayNameKey":"currentMeasureIndex",
+               "type":{
+                  "formatting":{
+                     "fontSize":true
+                  }
+               }
+            },
+            "currentMeasureName":{
+               "displayName":"Current measure name",
+               "displayNameKey":"currentMeasureName",
+               "type":{
+                  "text":true
+               }
+            },
+            "dontShowBlankAndNaN":{
+               "displayName":"Don't show '(Blank)' and '(NaN)' values",
+               "displayNameKey":"dontShowBlankAndNaN",
+               "type":{
+                  "bool":true
+               }
+            },
+            "blankAndNaNReplaceText":{
+                "displayName":"'(Blank)' and '(NaN)' replace text",
+                "displayNameKey":"blankAndNaNReplaceText",
+                "type":{
+                   "text":true
+                }
+             },
+            "fontSize":{
+               "displayName":"Text size",
+               "displayNameKey":"textSize",
+               "type":{
+                  "formatting":{
+                     "fontSize":true
+                  }
+               }
+            },
+            "isBold":{
+               "displayName":"Bold",
+               "displayNameKey":"bold",
+               "type":{
+                  "bool":true
+               }
+            },
+            "isItalic":{
+               "displayName":"Italic",
+               "displayNameKey":"italic",
+               "type":{
+                  "bool":true
+               }
+            },
+            "displayUnit":{
+               "displayName":"Display Units",
+               "displayNameKey":"displayUnit",
+               "type":{
+                  "formatting":{
+                     "labelDisplayUnits":true
+                  }
+               }
+            },
+            "precision":{
+               "displayName":"Decimal places",
+               "displayNameKey":"precision",
+               "type":{
+                  "numeric":true
+               }
+            },
+            "addPlusforPositiveValue":{
+               "displayName":"Add '+' if Value is Positive ",
+               "displayNameKey":"addPlusforPositiveValue",
+               "type":{
+                  "bool":true
+               }
+            },
+            "dataLabelCondition1":{
+               "displayName":"Condition 1",
+               "displayNameKey":"dataLabelCondition1",
+               "type":{
+                  "text":true
+               }
+            },
+            "dataLabelColor1":{
+               "displayName":"Color 1",
+               "displayNameKey":"dataLabelColor1",
+               "type":{
+                  "fill":{
+                     "solid":{
+                        "color":true
+                     }
+                  }
+               }
+            },
+            "prefix1":{
+               "displayName":"Prefix 1",
+               "displayNameKey":"prefix1",
+               "type":{
+                  "text":true
+               }
+            },
+            "postfix1":{
+               "displayName":"Postfix 1",
+               "displayNameKey":"postfix1",
+               "type":{
+                  "text":true
+               }
+            },
+            "dataLabelCondition2":{
+               "displayName":"Condition 2",
+               "displayNameKey":"dataLabelCondition2",
+               "type":{
+                  "text":true
+               }
+            },
+            "dataLabelColor2":{
+               "displayName":"Color 2",
+               "displayNameKey":"dataLabelColor2",
+               "type":{
+                  "fill":{
+                     "solid":{
+                        "color":true
+                     }
+                  }
+               }
+            },
+            "prefix2":{
+               "displayName":"Prefix 2",
+               "displayNameKey":"prefix2",
+               "type":{
+                  "text":true
+               }
+            },
+            "postfix2":{
+               "displayName":"Postfix 2",
+               "displayNameKey":"postfix2",
+               "type":{
+                  "text":true
+               }
+            },
+            "dataLabelCondition3":{
+               "displayName":"Condition 3",
+               "displayNameKey":"dataLabelCondition3",
+               "type":{
+                  "text":true
+               }
+            },
+            "dataLabelColor3":{
+               "displayName":"Color 3",
+               "displayNameKey":"dataLabelColor3",
+               "type":{
+                  "fill":{
+                     "solid":{
+                        "color":true
+                     }
+                  }
+               }
+            },
+            "prefix3":{
+               "displayName":"Prefix 3",
+               "displayNameKey":"prefix3",
+               "type":{
+                  "text":true
+               }
+            },
+            "postfix3":{
+               "displayName":"Postfix 3",
+               "displayNameKey":"postfix3",
+               "type":{
+                  "text":true
+               }
+            }
+         }
+      },
+      "about":{
+         "displayName":"About",
+         "displayNameKey":"about",
+         "properties":{
+            "version":{
+               "displayName":"Version",
+               "displayNameKey":"version",
+               "type":{
+                  "text":true
+               }
+            }
+         }
+      }
+   }
+}

@@ -1,8 +1,10 @@
 import * as React from "react";
 
 export interface State {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
+  margin?: number;
+  numberOfCards?: number;
 }
 
 const initialState: State = {
@@ -11,14 +13,13 @@ const initialState: State = {
 };
 
 class Card extends React.Component<State> {
+  private static updateCallback: (data: object) => void = null;
   state: State = initialState;
 
   constructor(props) {
     super(props);
     this.state = initialState;
   }
-
-  private static updateCallback: (data: object) => void = null;
 
   public static update(newState: State) {
     if (typeof Card.updateCallback == "function") {
@@ -37,10 +38,23 @@ class Card extends React.Component<State> {
   }
 
   render() {
-    // const {,
-    //   } = this.state;
+    const { width, height, numberOfCards, margin } = this.state;
+    const widthCard =
+      (width - (numberOfCards + 1) * 2 * margin) / numberOfCards;
+    const cards = new Array(numberOfCards).fill(0);
 
-    return <div> Hello world</div>;
+    return (
+      <div className="container_card">
+        {cards.map((v, i) => (
+          <div
+            className="card"
+            style={{ height: height, width: widthCard, margin: margin }}
+          >
+            <div className="header">Some text</div>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 

@@ -12,43 +12,20 @@
         }
     ],
     "objects": {
-        "dataPoint": {
-            "displayName": "Data colors",
+        "cardChard": {
+            "displayName": "Card settings",
             "properties": {
-                "defaultColor": {
-                    "displayName": "Default color",
+                "numberOfCards": {
+                    "displayName": "Max cards",
+                    "description": "Number of cards",
                     "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
+                        "formatting": {
+                            "fontSize": true
                         }
                     }
                 },
-                "showAllDataPoints": {
-                    "displayName": "Show all",
-                    "type": {
-                        "bool": true
-                    }
-                },
-                "fill": {
-                    "displayName": "Fill",
-                    "type": {
-                        "fill": {
-                            "solid": {
-                                "color": true
-                            }
-                        }
-                    }
-                },
-                "fillRule": {
-                    "displayName": "Color saturation",
-                    "type": {
-                        "fill": {}
-                    }
-                },
-                 "fontSize": {
-                    "displayName": "Text Size",
+                "margin": {
+                    "displayName": "Margin",
                     "type": {
                         "formatting": {
                             "fontSize": true

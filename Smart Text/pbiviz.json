@@ -1,0 +1,16 @@
+{"visual":
+  {"name":"smartText","displayName":"Smart Text by Rubicon",
+    "guid":"smartTextF41E0C22A1F94CCE89B947C7F0247071",
+    "visualClassName":"Visual","version":"1.3.2","description":"smartText","supportUrl":"www.rubicon-it.ru","gitHubUrl":""},
+    "apiVersion": "2.6.0",
+    "author": {
+      "name": "Rubicon",
+      "email": "popov@rubicon-it.ru"
+    },
+    "assets": {
+      
+    },
+    "externalJS":null,
+    "style":"style/visual.less",
+    "capabilities":"capabilities.json"
+}

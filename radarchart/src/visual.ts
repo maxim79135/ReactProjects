@@ -140,6 +140,7 @@ export class Visual implements IVisual {
         colors: this.chartData[0].colors,
         settings: this.settings,
       });
+ 
     }
   }
 

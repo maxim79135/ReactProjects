@@ -29,4 +29,11 @@
 import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
-export class VisualSettings extends DataViewObjectsParser {}
+export class CardChartSettings {
+  public numberOfCards: number = 5;
+  public margin: number = 5;
+}
+
+export class VisualSettings extends DataViewObjectsParser {
+  public cardChard: CardChartSettings = new CardChartSettings();
+}
