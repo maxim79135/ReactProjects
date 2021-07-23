@@ -29,11 +29,35 @@
 import { dataViewObjectsParser } from "powerbi-visuals-utils-dataviewutils";
 import DataViewObjectsParser = dataViewObjectsParser.DataViewObjectsParser;
 
-export class CardChartSettings {
-  public numberOfCards: number = 5;
-  public margin: number = 5;
+export class MainMeasureSettings {
+  public color: string = "#333333";
+  public displayUnit: number = 0;
+  public decimalPlaces: number = 0;
+  public textSize: number = 27;
+  public fontFamily: string = "wf_standard-font, helvetica, arial, sans-serif";
+}
+
+export class CategorySettings {
+  public show: boolean = true;
+  public horizontalAlignment: string = "center";
+  public paddingTop: number = 5;
+  public color: string = "#333333";
+  public textSize: number = 27;
+  public fontFamily: string = "wf_standard-font, helvetica, arial, sans-serif";
+  public wordWrap: boolean = true;
+  public defaultTitle: string = "";
+}
+
+export class MultipleCardsSettings {
+  public cardsPerRow: number = 5;
+  public spaceBetweenCards: number = 15;
+  public spaceBeforeFirstComponent: number = 15;
+  public spaceBetweenCardComponent: number = 15;
 }
 
 export class VisualSettings extends DataViewObjectsParser {
-  public cardChard: CardChartSettings = new CardChartSettings();
+  public mainMeasureSettings: MainMeasureSettings = new MainMeasureSettings();
+  public categorySettings: CategorySettings = new CategorySettings();
+  public multipleCardsSettings: MultipleCardsSettings =
+    new MultipleCardsSettings();
 }
