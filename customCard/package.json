@@ -12,11 +12,13 @@
     "@types/d3": "5.7.2",
     "@types/react-dom": "^17.0.9",
     "core-js": "3.2.1",
+    "csstype": "^3.0.8",
     "d3": "5.12.0",
     "powerbi-visuals-api": "~2.6.1",
     "powerbi-visuals-utils-dataviewutils": "2.2.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-grid-layout": "^1.2.5"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

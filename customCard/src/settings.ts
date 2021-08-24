@@ -37,7 +37,7 @@ export class MainMeasureSettings {
   public fontFamily: string = "wf_standard-font, helvetica, arial, sans-serif";
 }
 
-export class CategorySettings {
+export class CategoryMainMeasureSettings {
   public show: boolean = true;
   public horizontalAlignment: string = "center";
   public paddingTop: number = 5;
@@ -48,16 +48,35 @@ export class CategorySettings {
   public defaultTitle: string = "";
 }
 
+export class CategoryAdditionalMeasures {
+  public show: boolean = true;
+  public horizontalAlignment: string = "center";
+  public paddingTop: number = 5;
+  public color: string = "#333333";
+  public textSize: number = 15;
+  public fontFamily: string = "wf_standard-font, helvetica, arial, sans-serif";
+  public wordWrap: boolean = true;
+}
+
 export class MultipleCardsSettings {
-  public cardsPerRow: number = 5;
+  public cardsPerRow: number = 1;
   public spaceBetweenCards: number = 15;
   public spaceBeforeFirstComponent: number = 15;
   public spaceBetweenCardComponent: number = 15;
 }
 
+export class MeasureComparison1 {
+  public show: boolean = true;
+  public componentType: string = "measure1";
+}
+
 export class VisualSettings extends DataViewObjectsParser {
   public mainMeasureSettings: MainMeasureSettings = new MainMeasureSettings();
-  public categorySettings: CategorySettings = new CategorySettings();
+  public categoryMainMeasureSettings: CategoryMainMeasureSettings =
+    new CategoryMainMeasureSettings();
+  public categoryAdditionalMeasures: CategoryAdditionalMeasures =
+    new CategoryAdditionalMeasures();
   public multipleCardsSettings: MultipleCardsSettings =
     new MultipleCardsSettings();
+  public measureComparison1: MeasureComparison1 = new MeasureComparison1();
 }

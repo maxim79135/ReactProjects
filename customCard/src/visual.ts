@@ -57,19 +57,74 @@ export class Visual implements IVisual {
     ReactDOM.render(this.reactRoot, this.target);
   }
 
+  getMeasureValues(
+    values: powerbi.DataViewValueColumns,
+    nameOfRole: string
+  ): Array<Number> {
+    let measure: Array<Number> = [];
+    values.forEach((v) => {
+      if (v.source.roles[nameOfRole])
+        measure = v.values.map((v_) => Number(v_));
+    });
+    return measure;
+  }
+
+  getAdditionalCategoryValues(
+    values: powerbi.DataViewValueColumns,
+    nameOfRole: string[]
+  ): Array<string> {
+    let additionalCategory: Array<string> = [];
+    values.forEach((v, i) => {
+      nameOfRole.map((name) => {
+        if (v.source.roles[name]) additionalCategory.push(v.source.displayName);
+      });
+    });
+    return additionalCategory;
+  }
+
   public update(options: VisualUpdateOptions) {
     if (options.dataViews && options.dataViews[0]) {
       this.viewport = options.viewport;
       this.settings = VisualSettings.parse<VisualSettings>(
         options.dataViews[0]
       );
-      const width = this.viewport.width;
-      const height = this.viewport.height;
+
+      const width: number = this.viewport.width;
+      const height: number = this.viewport.height;
+      const settings: VisualSettings = this.settings;
+
+      let category: Array<string>;
+      if (options.dataViews[0].categorical.categories === undefined) {
+        category = [settings.categoryMainMeasureSettings.defaultTitle];
+      } else {
+        category = options.dataViews[0].categorical.categories[0].values.map(
+          (v) => v.toString()
+        );
+      }
+
+      let additionalCategory: Array<string> = this.getAdditionalCategoryValues(
+        options.dataViews[0].categorical.values,
+        ["measure_comparison_1", "measure_comparison_2", "measure_comparison_3"]
+      );
+
+      let main_measure: Array<Number> = this.getMeasureValues(
+        options.dataViews[0].categorical.values,
+        "main_measure"
+      );
+
+      let measure_comparison_1: Array<Number> = this.getMeasureValues(
+        options.dataViews[0].categorical.values,
+        "measure_comparison_1"
+      );
+
       Card.update({
         width: width,
         height: height,
-        numberOfCards: this.settings.cardChard.numberOfCards,
-        margin: this.settings.cardChard.margin,
+        settings: settings,
+        category: category,
+        main_measure: main_measure,
+        measure_comparison_1: measure_comparison_1,
+        additionalCategory: additionalCategory,
       });
     }
   }

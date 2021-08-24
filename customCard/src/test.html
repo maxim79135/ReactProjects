@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .card {
+        width: 500px;
+        height: 100px;
+        display: grid;
+        grid-template-areas:
+          "header header header header"
+          "main_measure header1 header2 header3"
+          "main_measure measure1 measure2 measure3";
+
+        background-color: green;
+        grid-gap: 10px;
+        padding: 10px;
+      }
+      .card > div {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .container_card {
+        display: inline-block;
+      }
+      .header {
+        grid-area: header;
+      }
+      .header1 {
+        grid-area: header1;
+      }
+      .header2 {
+        grid-area: header2;
+      }
+      .header3 {
+        grid-area: header3;
+      }
+      .main_measure {
+        grid-area: main_measure;
+        font-size: 40px;
+        text-align: center;
+        color: blue;
+      }
+      .measure1 {
+        grid-area: measure1;
+        font-size: 25px;
+      }
+      .measure2 {
+        grid-area: measure2;
+        font-size: 25px;
+      }
+      .measure3 {
+        grid-area: measure3;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container_card">
+      <div class="card">
+        <div class="header">NPS</div>
+        <div class="header1">Plan</div>
+        <div class="header2">LY</div>
+        <div class="header3">LE</div>
+        <div class="main_measure">10.4%</div>
+        <div class="measure1">10.5%</div>
+        <div class="measure2">10.6%</div>
+        <div class="measure3">10.7%</div>
+      </div>
+    </div>
+  </body>
+</html>

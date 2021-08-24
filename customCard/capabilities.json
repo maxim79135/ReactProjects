@@ -2,31 +2,37 @@
     "dataRoles": [
         {
             "displayName": "Main measure",
+            "displayNameKey": "mainMeasure",
             "name": "main_measure",
             "kind": "Measure"
         },
         {
             "displayName": "Category",
+            "displayNameKey": "category",
             "name": "category",
             "kind": "Grouping"
         },
         {
             "displayName": "Measure for comparison 1",
+            "displayNameKey": "additionalMeasure1",
             "name": "measure_comparison_1",
             "kind": "Measure"
         },
         {
             "displayName": "Measure for comparison 2",
+            "displayNameKey": "additionalMeasure2",
             "name": "measure_comparison_2",
             "kind": "Measure"
         },
         {
             "displayName": "Measure for comparison 3",
+            "displayNameKey": "additionalMeasure3",
             "name": "measure_comparison_3",
             "kind": "Measure"
         },
         {
             "displayName": "Tooltips",
+            "displayNameKey": "tooltips",
             "name": "tooltips",
             "kind": "Measure"
         }
@@ -34,9 +40,11 @@
     "objects": {
         "mainMeasureSettings": {
             "displayName": "Data label",
+            "displayNameKey": "mainMeasureSettings",
             "properties": {
                 "color": {
                     "displayName": "Color",
+                    "displayNameKey": "fontColor",
                     "type": {
                         "fill": {
                             "solid": {
@@ -47,6 +55,7 @@
                 },
                 "displayUnit": {
                     "displayName": "Display Unit",
+                    "displayNameKey": "displayUnit",
                     "type": {
                         "formatting": {
                             "labelDisplayUnits": true
@@ -55,12 +64,14 @@
                 },
                 "decimalPlaces": {
                     "displayName": "Decimal places",
+                    "displayNameKey": "precision",
                     "type": {
                         "numeric": true
                     }
                 },
                 "textSize": {
                     "displayName": "Text Size",
+                    "displayNameKey": "textSize",
                     "type": {
                         "formatting": {
                             "fontSize": true
@@ -69,6 +80,7 @@
                 },
                 "fontFamily": {
                     "displayName": "Font family",
+                    "displayNameKey": "fontFamily",
                     "type": {
                         "enumeration": [
                             {
@@ -172,8 +184,9 @@
                 }
             }
         },
-        "categorySettings": {
+        "categoryMainMeasureSettings": {
             "displayName": "Category label",
+            "displayNameKey": "categoryMainMeasureSettings",
             "properties": {
                 "show": {
                     "displayName": "Show Category Label",
@@ -183,6 +196,7 @@
                 },
                 "horizontalAlignment": {
                     "displayName": "Alignment",
+                    "displayNameKey": "alignment",
                     "description": "Align the content of the card to either left, right or center.",
                     "type": {
                         "formatting": {
@@ -192,12 +206,14 @@
                 },
                 "paddingTop": {
                     "displayName": "Padding top",
+                    "displayNameKey": "paddngTop",
                     "type": {
                         "numeric": true
                     }
                 },
                 "color": {
                     "displayName": "Color",
+                    "displayNameKey": "fontColor",
                     "type": {
                         "fill": {
                             "solid": {
@@ -208,6 +224,7 @@
                 },
                 "textSize": {
                     "displayName": "Text Size",
+                    "displayNameKey": "textSize",
                     "type": {
                         "formatting": {
                             "fontSize": true
@@ -216,6 +233,7 @@
                 },
                 "fontFamily": {
                     "displayName": "Font family",
+                    "displayNameKey": "fontFamily",
                     "type": {
                         "enumeration": [
                             {
@@ -319,43 +337,239 @@
                 },
                 "wordWrap": {
                     "displayName": "Word wrap",
+                    "displayNameKey": "wordWrap",
                     "type": {
                         "bool": true
                     }
                 },
                 "defaultTitle": {
                     "displayName": "Default title",
+                    "displayNameKey": "defaultTitle",
                     "type": {
                         "text": true
                     }
                 }
             }
         },
+        "categoryAdditionalMeasures": {
+            "displayName": "Category label for additional measures",
+            "displayNameKey": "categoryAdditionalMeasures",
+            "properties": {
+                "show": {
+                    "displayName": "Show Category Label",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "horizontalAlignment": {
+                    "displayName": "Content horizontal alignment",
+                    "displayNameKey": "alignment",
+                    "description": "Align the content of the card to either left, right or center.",
+                    "type": {
+                        "formatting": {
+                            "alignment": true
+                        }
+                    }
+                },
+                "paddingTop": {
+                    "displayName": "Padding top",
+                    "displayNameKey": "paddngTop",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "color": {
+                    "displayName": "Color",
+                    "displayNameKey": "fontColor",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "textSize": {
+                    "displayName": "Text Size",
+                    "displayNameKey": "textSize",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                },
+                "fontFamily": {
+                    "displayName": "Font family",
+                    "displayNameKey": "fontFamily",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "DIN",
+                                "value": "wf_standard-font, helvetica, arial, sans-serif"
+                            },
+                            {
+                                "displayName": "Arial",
+                                "value": "Arial"
+                            },
+                            {
+                                "displayName": "Arial Black",
+                                "value": "\"Arial Black\""
+                            },
+                            {
+                                "displayName": "Arial Unicode MS",
+                                "value": "\"Arial Unicode MS\""
+                            },
+                            {
+                                "displayName": "Calibri",
+                                "value": "Calibri"
+                            },
+                            {
+                                "displayName": "Cambria",
+                                "value": "Cambria"
+                            },
+                            {
+                                "displayName": "Cambria Math",
+                                "value": "\"Cambria Math\""
+                            },
+                            {
+                                "displayName": "Candara",
+                                "value": "Candara"
+                            },
+                            {
+                                "displayName": "Comic Sans MS",
+                                "value": "\"Comic Sans MS\""
+                            },
+                            {
+                                "displayName": "Consolas",
+                                "value": "Consolas"
+                            },
+                            {
+                                "displayName": "Constantia",
+                                "value": "Constantia"
+                            },
+                            {
+                                "displayName": "Corbel",
+                                "value": "Corbel"
+                            },
+                            {
+                                "displayName": "Courier New",
+                                "value": "\"Courier New\""
+                            },
+                            {
+                                "displayName": "Georgia",
+                                "value": "Georgia"
+                            },
+                            {
+                                "displayName": "Lucida Sans Unicode",
+                                "value": "\"Lucida Sans Unicode\""
+                            },
+                            {
+                                "displayName": "Segoe (Bold)",
+                                "value": "\"Segoe UI Bold\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+                            },
+                            {
+                                "displayName": "Segoe UI",
+                                "value": "\"Segoe UI\", wf_segoe-ui_normal, helvetica, arial, sans-serif"
+                            },
+                            {
+                                "displayName": "Segoe UI Light",
+                                "value": "\"Segoe UI Light\", wf_segoe-ui_bold, helvetica, arial, sans-serif"
+                            },
+                            {
+                                "displayName": "Symbol",
+                                "value": "Symbol"
+                            },
+                            {
+                                "displayName": "Tahoma",
+                                "value": "Tahoma"
+                            },
+                            {
+                                "displayName": "Times New Roman",
+                                "value": "\"Times New Roman\""
+                            },
+                            {
+                                "displayName": "Trebuchet MS",
+                                "value": "\"Trebuchet MS\""
+                            },
+                            {
+                                "displayName": "Verdana",
+                                "value": "Verdana"
+                            },
+                            {
+                                "displayName": "Wingdings",
+                                "value": "Wingdings"
+                            }
+                        ]
+                    }
+                },
+                "wordWrap": {
+                    "displayName": "Word wrap",
+                    "displayNameKey": "wordWrap",
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
         "multipleCardsSettings": {
             "displayName": "Multiple cards",
+            "displayNameKey": "multipleCardsSettings",
             "properties": {
                 "cardsPerRow": {
                     "displayName": "Cards per row",
+                    "displayNameKey": "cardsPerRow",
                     "type": {
-                        "integer": true                        
+                        "numeric": true
                     }
                 },
                 "spaceBetweenCards": {
                     "displayName": "Space between cards",
+                    "displayNameKey": "spaceBetweenCards",
                     "type": {
                         "numeric": true
                     }
                 },
                 "spaceBeforeFirstComponent": {
                     "displayName": "Space before the first component",
+                    "displayNameKey": "spaceBeforeFirstComponent",
                     "type": {
                         "numeric": true
                     }
                 },
                 "spaceBetweenCardComponent": {
+                    "displayNameKey": "spaceBetweenCardComponent",
                     "displayName": "Space between card components",
                     "type": {
                         "numeric": true
+                    }
+                }
+            }
+        },
+        "measureComparison1": {
+            "displayName": "Measure for comparison 1",
+            "displayNameKey": "measureComparison1",
+            "properties": {
+                "show": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "componentType": {
+                    "displayName": "Component type",
+                    "displayNameKey": "componentType",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Percentage change over Measure 1",
+                                "displayNameKey": "percentageChanveOver1",
+                                "value": "percentageChanveOver"
+                            },
+                            {
+                                "displayName": "Change over Measure 1",
+                                "displayNameKey": "changeOver1",
+                                "value": "changeOver"
+                            }
+                        ]
                     }
                 }
             }
@@ -369,6 +583,7 @@
                         "max": 1
                     },
                     "category": {
+                        "min": 0,
                         "max": 1
                     },
                     "measure_comparison_1": {
@@ -404,6 +619,21 @@
                         {
                             "bind": {
                                 "to": "tooltips"
+                            }
+                        },
+                        {
+                            "bind": {
+                                "to": "measure_comparison_1"
+                            }
+                        },
+                        {
+                            "bind": {
+                                "to": "measure_comparison_2"
+                            }
+                        },
+                        {
+                            "bind": {
+                                "to": "measure_comparison_3"
                             }
                         }
                     ]

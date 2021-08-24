@@ -1,1 +1,25 @@
-{"visual":{"name":"customCard","displayName":"customCard","guid":"customCard1219366D632442ECA83A32EB243E05B3","visualClassName":"Visual","version":"1.0.0","description":"","supportUrl":"","gitHubUrl":""},"apiVersion":"2.6.0","author":{"name":"","email":""},"assets":{"icon":"assets/icon.png"},"externalJS":null,"style":"style/visual.less","capabilities":"capabilities.json","dependencies":null,"stringResources":[]}
+{
+    "visual": {
+        "name": "customCard",
+        "displayName": "customCard",
+        "guid": "customCard",
+        "visualClassName": "Visual",
+        "version": "1.0.0",
+        "description": "test",
+        "supportUrl": "test",
+        "gitHubUrl": ""
+    },
+    "apiVersion": "2.6.0",
+    "author": {
+        "name": "test",
+        "email": "test"
+    },
+    "assets": {
+        "icon": "assets/icon.png"
+    },
+    "externalJS": null,
+    "style": "style/visual.less",
+    "capabilities": "capabilities.json",
+    "dependencies": null,
+    "stringResources": []
+}
