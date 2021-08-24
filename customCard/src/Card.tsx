@@ -125,14 +125,27 @@ class Card extends React.Component<State> {
     );
   }
 
+  updateMainMeasure(index: number) {
+    this.items.push({
+      i: "main_measure",
+      className: "main_measure",
+      style: this.styles["data_label_style"],
+      value: this.state.main_measure[index],
+    });
+  }
+
   updateElement(index: number) {
-    this.items.splice(0, this.items.length);
+    this.items = new Array(0)
+
+    // this.updateMainMeasure(index);
     if (this.state.settings.categoryMainMeasureSettings.show) {
       this.updateCategoryLabel(index);
     }
-    if (this.state.settings.categoryAdditionalMeasures.show) {
-      this.updateAdditionalCategoryLabel(index);
-    }
+    // if (this.state.settings.categoryAdditionalMeasures.show) {
+    //   this.updateAdditionalCategoryLabel(index);
+    // }
+    console.log(this.items);
+    
   }
 
   createElement(el) {
@@ -178,6 +191,7 @@ class Card extends React.Component<State> {
 
     return cards.map((v, i) => {
       this.updateElement(i);
+
       return (
         <div
           className="container_card"
