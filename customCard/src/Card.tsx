@@ -13,6 +13,7 @@ export interface State {
   category: string[];
   main_measure: Number[];
   measure_comparison_1: Number[];
+  measure_comparison_2: Number[];
   additionalCategory: Array<string>;
 }
 
@@ -23,6 +24,7 @@ const initialState: State = {
   category: [],
   main_measure: [],
   measure_comparison_1: [],
+  measure_comparison_2: [],
   additionalCategory: [],
 };
 
@@ -34,6 +36,7 @@ class Card extends React.Component<State> {
   heightCard: number;
   styles: {};
   items: Array<{}>;
+  layout = [];
 
   constructor(props) {
     super(props);
@@ -61,13 +64,7 @@ class Card extends React.Component<State> {
     const card_style = {
       height: this.heightCard,
       width: this.widthCard,
-      // margin: spaceBetweenCards,
-      // display: "grid",
-      // gridTemplateAreas:
-      //   '"header header header header header header header" "main_measure main_measure main_measure main_measure header1 header2 header3" "main_measure main_measure main_measure main_measure measure1 measure2 measure3"',
       backgroundColor: "white",
-      // gridGap: 10,
-      // padding: this.padding,
     };
     const data_label_style = {
       fontSize: settings.mainMeasureSettings.textSize,
@@ -95,6 +92,9 @@ class Card extends React.Component<State> {
       color: settings.categoryAdditionalMeasures.color,
       fontSize: settings.categoryAdditionalMeasures.textSize,
       fontFamily: settings.categoryAdditionalMeasures.fontFamily,
+      display: "flex" as "flex",
+      justifyContent: "center" as "center",
+      flexDirection: "column" as "column",
     };
 
     return {
@@ -134,18 +134,75 @@ class Card extends React.Component<State> {
     });
   }
 
-  updateElement(index: number) {
-    this.items = new Array(0)
+  updateMeasureComparison(index: number, values: Number[], id: number) {
+    this.items.push({
+      i: `measure${id}`,
+      className: `measure${id}`,
+      style: this.styles["category_additional_measure_style"],
+      value: values[index],
+    });
+  }
 
-    // this.updateMainMeasure(index);
+  updateElement(index: number) {
+    this.items = [];
+
+    this.updateMainMeasure(index);
     if (this.state.settings.categoryMainMeasureSettings.show) {
       this.updateCategoryLabel(index);
     }
-    // if (this.state.settings.categoryAdditionalMeasures.show) {
-    //   this.updateAdditionalCategoryLabel(index);
-    // }
-    console.log(this.items);
-    
+    if (this.state.settings.categoryAdditionalMeasures.show) {
+      this.updateAdditionalCategoryLabel(index);
+    }
+    if (this.state.settings.measureComparison1.show) {
+      this.updateMeasureComparison(index, this.state.measure_comparison_1, 1);
+      this.updateMeasureComparison(index, this.state.measure_comparison_2, 2);
+    }
+  }
+
+  updateLayout() {
+    this.layout = [];
+    let offsetY: number = 0;
+
+    if (this.state.settings.categoryMainMeasureSettings.show) {
+      this.layout.push({ i: "header", x: 0, y: 0, w: 12, h: 1, static: true });
+    } else {
+      offsetY -= 1;
+    }
+    this.layout.push({
+      i: "main_measure",
+      x: 0,
+      y: 1 + offsetY,
+      w: 6,
+      h: 2 - offsetY,
+      static: true,
+    });
+    if (this.state.settings.categoryAdditionalMeasures.show) {
+      this.layout = this.layout.concat([
+        { i: "header1", x: 6, y: 1 + offsetY, w: 2, h: 1, static: true },
+        { i: "header2", x: 8, y: 1 + offsetY, w: 2, h: 1, static: true },
+        { i: "header3", x: 10, y: 1 + offsetY, w: 2, h: 1, static: true },
+      ]);
+    } else {
+      offsetY -= 1;
+    }
+    if (this.state.settings.measureComparison1.show) {
+      this.layout.push({
+        i: "measure1",
+        x: 6,
+        y: 2 + offsetY,
+        w: 2,
+        h: 1 - offsetY,
+        static: true,
+      });
+      this.layout.push({
+        i: "measure2",
+        x: 8,
+        y: 2 + offsetY,
+        w: 2,
+        h: 1 - offsetY,
+        static: true,
+      });
+    }
   }
 
   createElement(el) {
@@ -157,14 +214,7 @@ class Card extends React.Component<State> {
   }
 
   render() {
-    const {
-      width,
-      height,
-      settings,
-      category,
-      main_measure,
-      measure_comparison_1,
-    } = this.state;
+    const { width, height, settings, category } = this.state;
 
     const cardsPerRow = settings.multipleCardsSettings.cardsPerRow,
       spaceBetweenCards = settings.multipleCardsSettings.spaceBetweenCards;
@@ -180,16 +230,8 @@ class Card extends React.Component<State> {
     const cards = new Array(category.length).fill(0);
     this.styles = this.updateStyles(settings);
 
-    const layout = [
-      { i: "header", x: 0, y: 0, w: 6, h: 1, static: true },
-      { i: "header1", x: 3, y: 1, w: 1, h: 1, static: true },
-      { i: "header2", x: 4, y: 1, w: 1, h: 1, static: true },
-      { i: "header3", x: 5, y: 1, w: 1, h: 1, static: true },
-      { i: "main_measure", x: 0, y: 1, w: 3, h: 2, static: true },
-      { i: "measure1", x: 3, y: 2, w: 1, h: 1, static: true },
-    ];
-
     return cards.map((v, i) => {
+      this.updateLayout();
       this.updateElement(i);
 
       return (
@@ -203,14 +245,14 @@ class Card extends React.Component<State> {
           <div className="card" style={this.styles["card_style"]}>
             <GridLayout
               className="layout"
-              layout={layout}
-              cols={6}
+              layout={this.layout}
+              cols={12}
               rowHeight={
                 (this.heightCard -
                   settings.categoryMainMeasureSettings.paddingTop -
                   settings.categoryAdditionalMeasures.paddingTop -
                   15) /
-                3
+                (3)
               }
               width={this.widthCard}
             >

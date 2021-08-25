@@ -117,6 +117,11 @@ export class Visual implements IVisual {
         "measure_comparison_1"
       );
 
+      let measure_comparison_2: Array<Number> = this.getMeasureValues(
+        options.dataViews[0].categorical.values,
+        "measure_comparison_2"
+      );
+
       Card.update({
         width: width,
         height: height,
@@ -124,6 +129,7 @@ export class Visual implements IVisual {
         category: category,
         main_measure: main_measure,
         measure_comparison_1: measure_comparison_1,
+        measure_comparison_2: measure_comparison_2,
         additionalCategory: additionalCategory,
       });
     }
