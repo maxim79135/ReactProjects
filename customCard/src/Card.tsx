@@ -36,7 +36,6 @@ class Card extends React.Component<State> {
   padding: number = 10;
   widthCard: number;
   heightCard: number;
-  styles: {};
   items: Array<{}>;
   layout = [];
 
@@ -108,7 +107,14 @@ class Card extends React.Component<State> {
   }
 
   render() {
-    const { width, height, settings, category } = this.state;
+    const {
+      width,
+      height,
+      settings,
+      category,
+      main_measure,
+      measure_comparison_1,
+    } = this.state;
 
     const cardsPerRow = settings.multipleCardsSettings.cardsPerRow,
       spaceBetweenCards = settings.multipleCardsSettings.spaceBetweenCards;
@@ -122,25 +128,35 @@ class Card extends React.Component<State> {
       (height - countRows * spaceBetweenCards - 2 * this.padding) / countRows -
       this.padding;
     const cards = new Array(category.length).fill(0);
-    this.styles = this.updateStyles(settings);
+    let styles = this.updateStyles(settings);
 
     return (
       <Row xs={settings.multipleCardsSettings.cardsPerRow.toString()}>
         {cards.map((v, i) => (
           <Container>
-            {settings.categoryMainMeasureSettings.show && <Row>Header</Row>}
+            {settings.categoryMainMeasureSettings.show && (
+              <Row style={styles.category_label_style}>{category[i]}</Row>
+            )}
             <Row>
-              <Col xs="6" style={this.styles[]}>123</Col>
+              <Col xs="6" style={styles.data_label_style}>
+                {main_measure[i]}
+              </Col>
               <Col xs="6">
                 {settings.categoryAdditionalMeasures.show && (
                   <Row>
-                    <Col>A</Col>
+                    {settings.measureComparison1.show && (
+                      <Col style={styles.category_additional_measure_style}>
+                        A
+                      </Col>
+                    )}
                     <Col>B</Col>
                     <Col>C</Col>
                   </Row>
                 )}
                 <Row>
-                  <Col>1</Col>
+                  {settings.measureComparison1.show && (
+                    <Col>{measure_comparison_1[i]}</Col>
+                  )}
                   <Col>2</Col>
                   <Col>3</Col>
                 </Row>
