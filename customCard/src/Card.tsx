@@ -1,8 +1,10 @@
 import * as React from "react";
 import { VisualSettings } from "./settings";
 import * as CSS from "csstype";
+import "bootstrap/dist/css/bootstrap.css";
 import GridLayout from "react-grid-layout";
-import powerbi from "powerbi-visuals-api";
+
+import { Container, Row, Col } from "reactstrap";
 
 export interface State {
   width?: number;
@@ -230,38 +232,32 @@ class Card extends React.Component<State> {
     const cards = new Array(category.length).fill(0);
     this.styles = this.updateStyles(settings);
 
-    return cards.map((v, i) => {
-      this.updateLayout();
-      this.updateElement(i);
-
-      return (
-        <div
-          className="container_card"
-          style={{
-            marginRight: spaceBetweenCards,
-            marginBottom: spaceBetweenCards,
-          }}
-        >
-          <div className="card" style={this.styles["card_style"]}>
-            <GridLayout
-              className="layout"
-              layout={this.layout}
-              cols={12}
-              rowHeight={
-                (this.heightCard -
-                  settings.categoryMainMeasureSettings.paddingTop -
-                  settings.categoryAdditionalMeasures.paddingTop -
-                  15) /
-                (3)
-              }
-              width={this.widthCard}
-            >
-              {this.items.map((el) => this.createElement(el))}
-            </GridLayout>
-          </div>
-        </div>
-      );
-    });
+    return (
+      <Row xs={settings.multipleCardsSettings.cardsPerRow.toString()}>
+        {cards.map((v, i) => (
+          <Container>
+            {settings.categoryMainMeasureSettings.show && <Row>Header</Row>}
+            <Row>
+              <Col xs="6">123</Col>
+              <Col xs="6">
+                {settings.categoryAdditionalMeasures.show && (
+                  <Row>
+                    <Col>A</Col>
+                    <Col>B</Col>
+                    <Col>C</Col>
+                  </Row>
+                )}
+                <Row>
+                  <Col>1</Col>
+                  <Col>2</Col>
+                  <Col>3</Col>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        ))}
+      </Row>
+    );
   }
 }
 
