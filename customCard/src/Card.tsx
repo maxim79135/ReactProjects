@@ -107,114 +107,6 @@ class Card extends React.Component<State> {
     };
   }
 
-  updateCategoryLabel(index: number) {
-    this.items.push({
-      i: "header",
-      className: "header",
-      style: this.styles["category_label_style"],
-      value: this.state.category[index],
-    });
-  }
-
-  updateAdditionalCategoryLabel(index: number) {
-    ["header1", "header2", "header3"].map((value, i) =>
-      this.items.push({
-        i: value,
-        className: value,
-        style: this.styles["category_additional_measure_style"],
-        value: this.state.additionalCategory[i],
-      })
-    );
-  }
-
-  updateMainMeasure(index: number) {
-    this.items.push({
-      i: "main_measure",
-      className: "main_measure",
-      style: this.styles["data_label_style"],
-      value: this.state.main_measure[index],
-    });
-  }
-
-  updateMeasureComparison(index: number, values: Number[], id: number) {
-    this.items.push({
-      i: `measure${id}`,
-      className: `measure${id}`,
-      style: this.styles["category_additional_measure_style"],
-      value: values[index],
-    });
-  }
-
-  updateElement(index: number) {
-    this.items = [];
-
-    this.updateMainMeasure(index);
-    if (this.state.settings.categoryMainMeasureSettings.show) {
-      this.updateCategoryLabel(index);
-    }
-    if (this.state.settings.categoryAdditionalMeasures.show) {
-      this.updateAdditionalCategoryLabel(index);
-    }
-    if (this.state.settings.measureComparison1.show) {
-      this.updateMeasureComparison(index, this.state.measure_comparison_1, 1);
-      this.updateMeasureComparison(index, this.state.measure_comparison_2, 2);
-    }
-  }
-
-  updateLayout() {
-    this.layout = [];
-    let offsetY: number = 0;
-
-    if (this.state.settings.categoryMainMeasureSettings.show) {
-      this.layout.push({ i: "header", x: 0, y: 0, w: 12, h: 1, static: true });
-    } else {
-      offsetY -= 1;
-    }
-    this.layout.push({
-      i: "main_measure",
-      x: 0,
-      y: 1 + offsetY,
-      w: 6,
-      h: 2 - offsetY,
-      static: true,
-    });
-    if (this.state.settings.categoryAdditionalMeasures.show) {
-      this.layout = this.layout.concat([
-        { i: "header1", x: 6, y: 1 + offsetY, w: 2, h: 1, static: true },
-        { i: "header2", x: 8, y: 1 + offsetY, w: 2, h: 1, static: true },
-        { i: "header3", x: 10, y: 1 + offsetY, w: 2, h: 1, static: true },
-      ]);
-    } else {
-      offsetY -= 1;
-    }
-    if (this.state.settings.measureComparison1.show) {
-      this.layout.push({
-        i: "measure1",
-        x: 6,
-        y: 2 + offsetY,
-        w: 2,
-        h: 1 - offsetY,
-        static: true,
-      });
-      this.layout.push({
-        i: "measure2",
-        x: 8,
-        y: 2 + offsetY,
-        w: 2,
-        h: 1 - offsetY,
-        static: true,
-      });
-    }
-  }
-
-  createElement(el) {
-    return (
-      <div key={el.i} className={el.className} style={el.style}>
-        {el.value}
-      </div>
-    );
-  }
-
   render() {
     const { width, height, settings, category } = this.state;
 
@@ -238,7 +130,7 @@ class Card extends React.Component<State> {
           <Container>
             {settings.categoryMainMeasureSettings.show && <Row>Header</Row>}
             <Row>
-              <Col xs="6">123</Col>
+              <Col xs="6" style={this.styles[]}>123</Col>
               <Col xs="6">
                 {settings.categoryAdditionalMeasures.show && (
                   <Row>
