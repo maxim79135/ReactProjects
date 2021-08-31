@@ -65,9 +65,12 @@ export class MultipleCardsSettings {
   public spaceBetweenCardComponent: number = 15;
 }
 
-export class MeasureComparison1 {
+export class MeasureComparison {
   public show: boolean = true;
-  public componentType: string = "measure1";
+  public componentType: string = "measure";
+  public unmatchedColor: string = "#333333";
+  public comparisonOperator: string = ">";
+  public condition: boolean = false;
 }
 
 export class VisualSettings extends DataViewObjectsParser {
@@ -78,5 +81,7 @@ export class VisualSettings extends DataViewObjectsParser {
     new CategoryAdditionalMeasures();
   public multipleCardsSettings: MultipleCardsSettings =
     new MultipleCardsSettings();
-  public measureComparison1: MeasureComparison1 = new MeasureComparison1();
+  public measureComparison1: MeasureComparison = new MeasureComparison();
+  public measureComparison2: MeasureComparison = new MeasureComparison();
+  public measureComparison3: MeasureComparison = new MeasureComparison();
 }

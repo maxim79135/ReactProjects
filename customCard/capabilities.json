@@ -568,8 +568,249 @@
                                 "displayName": "Change over Measure 1",
                                 "displayNameKey": "changeOver1",
                                 "value": "changeOver"
+                            },
+                            {
+                                "displayName": "Percentage over Measure 1",
+                                "displayNameKey": "percentageOver1",
+                                "value": "percentageOver"
+                            },
+                            {
+                                "displayName": "Measure 1",
+                                "displayNameKey": "measure1",
+                                "value": "measure"
                             }
                         ]
+                    }
+                },
+                "unmatchedColor": {
+                    "displayName": "Unmatched state color",
+                    "displayNameKey": "unmatchedColor",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "comparisonOperator": {
+                    "displayName": "Comparison operator",
+                    "displayNameKey": "comparisonOperator",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Greater than (>)",
+                                "displayNameKey": ">",
+                                "value": ">"
+                            },
+                            {
+                                "displayName": "Greater than or equal to (>=)",
+                                "displayNameKey": ">=",
+                                "value": ">="
+                            },
+                            {
+                                "displayName": "Equal to (=)",
+                                "displayNameKey": "=",
+                                "value": "="
+                            },
+                            {
+                                "displayName": "Less than or equal to (<=)",
+                                "displayNameKey": "<=",
+                                "value": "<="
+                            },
+                            {
+                                "displayName": "Less than (<)",
+                                "displayNameKey": "<",
+                                "value": "<"
+                            }
+                        ]
+                    }
+                },
+                "condition": {
+                    "displayName": "Condition 1",
+                    "displayNameKey": "condition1",
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "measureComparison2": {
+            "displayName": "Measure for comparison 2",
+            "displayNameKey": "measureComparison2",
+            "properties": {
+                "show": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "componentType": {
+                    "displayName": "Component type",
+                    "displayNameKey": "componentType",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Percentage change over Measure 2",
+                                "displayNameKey": "percentageChanveOver2",
+                                "value": "percentageChanveOver"
+                            },
+                            {
+                                "displayName": "Change over Measure 2",
+                                "displayNameKey": "changeOver2",
+                                "value": "changeOver"
+                            },
+                            {
+                                "displayName": "Percentage over Measure 2",
+                                "displayNameKey": "percentageOver2",
+                                "value": "percentageOver"
+                            },
+                            {
+                                "displayName": "Measure 2",
+                                "displayNameKey": "measure2",
+                                "value": "measure"
+                            }
+                        ]
+                    }
+                },
+                "unmatchedColor": {
+                    "displayName": "Unmatched state color",
+                    "displayNameKey": "unmatchedColor",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "comparisonOperator": {
+                    "displayName": "Comparison operator",
+                    "displayNameKey": "comparisonOperator",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Greater than (>)",
+                                "displayNameKey": ">",
+                                "value": ">"
+                            },
+                            {
+                                "displayName": "Greater than or equal to (>=)",
+                                "displayNameKey": ">=",
+                                "value": ">="
+                            },
+                            {
+                                "displayName": "Equal to (=)",
+                                "displayNameKey": "=",
+                                "value": "="
+                            },
+                            {
+                                "displayName": "Less than or equal to (<=)",
+                                "displayNameKey": "<=",
+                                "value": "<="
+                            },
+                            {
+                                "displayName": "Less than (<)",
+                                "displayNameKey": "<",
+                                "value": "<"
+                            }
+                        ]
+                    }
+                },
+                "condition": {
+                    "displayName": "Condition 2",
+                    "displayNameKey": "condition2",
+                    "type": {
+                        "bool": true
+                    }
+                }
+            }
+        },
+        "measureComparison3": {
+            "displayName": "Measure for comparison 3",
+            "displayNameKey": "measureComparison3",
+            "properties": {
+                "show": {
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "componentType": {
+                    "displayName": "Component type",
+                    "displayNameKey": "componentType",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Percentage change over Measure 3",
+                                "displayNameKey": "percentageChanveOver3",
+                                "value": "percentageChanveOver"
+                            },
+                            {
+                                "displayName": "Change over Measure 3",
+                                "displayNameKey": "changeOver3",
+                                "value": "changeOver"
+                            },
+                            {
+                                "displayName": "Percentage over Measure 3",
+                                "displayNameKey": "percentageOver3",
+                                "value": "percentageOver"
+                            },
+                            {
+                                "displayName": "Measure 3",
+                                "displayNameKey": "measure3",
+                                "value": "measure"
+                            }
+                        ]
+                    }
+                },
+                "unmatchedColor": {
+                    "displayName": "Unmatched state color",
+                    "displayNameKey": "unmatchedColor",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "comparisonOperator": {
+                    "displayName": "Comparison operator",
+                    "displayNameKey": "comparisonOperator",
+                    "type": {
+                        "enumeration": [
+                            {
+                                "displayName": "Greater than (>)",
+                                "displayNameKey": ">",
+                                "value": ">"
+                            },
+                            {
+                                "displayName": "Greater than or equal to (>=)",
+                                "displayNameKey": ">=",
+                                "value": ">="
+                            },
+                            {
+                                "displayName": "Equal to (=)",
+                                "displayNameKey": "=",
+                                "value": "="
+                            },
+                            {
+                                "displayName": "Less than or equal to (<=)",
+                                "displayNameKey": "<=",
+                                "value": "<="
+                            },
+                            {
+                                "displayName": "Less than (<)",
+                                "displayNameKey": "<",
+                                "value": "<"
+                            }
+                        ]
+                    }
+                },
+                "condition": {
+                    "displayName": "Condition 3",
+                    "displayNameKey": "condition3",
+                    "type": {
+                        "bool": true
                     }
                 }
             }
