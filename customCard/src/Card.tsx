@@ -2,9 +2,12 @@ import * as React from "react";
 import { VisualSettings } from "./settings";
 import * as CSS from "csstype";
 import "bootstrap/dist/css/bootstrap.css";
-import GridLayout from "react-grid-layout";
-
 import { Container, Row, Col } from "reactstrap";
+
+import AdditionalCategory from "./AdditionalCategory";
+import AdditionalMeasure from "./AdditionalMeasure";
+import MainMeasure from "./MainMeasure";
+import MainCategory from "./MainCategory";
 
 export interface State {
   width?: number;
@@ -14,8 +17,7 @@ export interface State {
   settings: VisualSettings;
   category: string[];
   main_measure: Number[];
-  measure_comparison_1: Number[];
-  measure_comparison_2: Number[];
+  additionalMeasures: Array<{ name: string; values: Number[] }>;
   additionalCategory: Array<string>;
 }
 
@@ -25,8 +27,7 @@ const initialState: State = {
   settings: new VisualSettings(),
   category: [],
   main_measure: [],
-  measure_comparison_1: [],
-  measure_comparison_2: [],
+  additionalMeasures: [],
   additionalCategory: [],
 };
 
@@ -61,106 +62,59 @@ class Card extends React.Component<State> {
     Card.updateCallback = null;
   }
 
-  updateStyles(settings: VisualSettings) {
-    const card_style = {
-      height: this.heightCard,
-      width: this.widthCard,
-      backgroundColor: "white",
-    };
-    const data_label_style = {
-      fontSize: settings.mainMeasureSettings.textSize,
-      color: settings.mainMeasureSettings.color,
-      fontFamily: settings.mainMeasureSettings.fontFamily,
-      textAlign: "center" as "center",
-      display: "flex" as "flex",
-      justifyContent: "center" as "center",
-      flexDirection: "column" as "column",
-    };
-
-    const category_label_style = {
-      textAlign: settings.categoryMainMeasureSettings
-        .horizontalAlignment as CSS.Property.TextAlign,
-      paddingTop: settings.categoryMainMeasureSettings.paddingTop,
-      color: settings.categoryMainMeasureSettings.color,
-      fontSize: settings.categoryMainMeasureSettings.textSize,
-      fontFamily: settings.categoryMainMeasureSettings.fontFamily,
-    };
-
-    const category_additional_measure_style = {
-      textAlign: settings.categoryAdditionalMeasures
-        .horizontalAlignment as CSS.Property.TextAlign,
-      paddingTop: settings.categoryAdditionalMeasures.paddingTop,
-      color: settings.categoryAdditionalMeasures.color,
-      fontSize: settings.categoryAdditionalMeasures.textSize,
-      fontFamily: settings.categoryAdditionalMeasures.fontFamily,
-      display: "flex" as "flex",
-      justifyContent: "center" as "center",
-      flexDirection: "column" as "column",
-    };
-
-    return {
-      card_style,
-      data_label_style,
-      category_label_style,
-      category_additional_measure_style,
-    };
-  }
-
   render() {
     const {
       width,
       height,
       settings,
       category,
+      additionalCategory,
       main_measure,
-      measure_comparison_1,
+      additionalMeasures,
     } = this.state;
 
     const cardsPerRow = settings.multipleCardsSettings.cardsPerRow,
       spaceBetweenCards = settings.multipleCardsSettings.spaceBetweenCards;
-    const countRows = Math.floor((category.length - 1) / cardsPerRow) + 1;
+    // const countRows = Math.floor((category.length - 1) / cardsPerRow) + 1;
 
-    this.widthCard =
-      (width - cardsPerRow * spaceBetweenCards - 2 * this.padding) /
-        cardsPerRow -
-      2 * this.padding;
-    this.heightCard =
-      (height - countRows * spaceBetweenCards - 2 * this.padding) / countRows -
-      this.padding;
+    // this.widthCard =
+    //   (width - cardsPerRow * spaceBetweenCards - 2 * this.padding) /
+    //     cardsPerRow -
+    //   2 * this.padding;
+    // this.heightCard =
+    //   (height - countRows * spaceBetweenCards - 2 * this.padding) / countRows -
+    //   this.padding;
     const cards = new Array(category.length).fill(0);
-    let styles = this.updateStyles(settings);
+    const isDisabledAdditionalMeasures =
+      !settings.measureComparison1.show &&
+      !settings.measureComparison2.show &&
+      !settings.measureComparison3.show &&
+      !settings.categoryAdditionalMeasures.show;
 
     return (
-      <Row xs={settings.multipleCardsSettings.cardsPerRow.toString()}>
+      <Row xs={cardsPerRow.toString()}>
         {cards.map((v, i) => (
-          <Container>
-            {settings.categoryMainMeasureSettings.show && (
-              <Row style={styles.category_label_style}>{category[i]}</Row>
-            )}
+          <Container className="card">
             <Row>
-              <Col xs="6" style={styles.data_label_style}>
-                {main_measure[i]}
-              </Col>
-              <Col xs="6">
-                {settings.categoryAdditionalMeasures.show && (
-                  <Row>
-                    {settings.measureComparison1.show && (
-                      <Col style={styles.category_additional_measure_style}>
-                        A
-                      </Col>
-                    )}
-                    <Col>B</Col>
-                    <Col>C</Col>
-                  </Row>
-                )}
-                <Row>
-                  {settings.measureComparison1.show && (
-                    <Col>{measure_comparison_1[i]}</Col>
-                  )}
-                  <Col>2</Col>
-                  <Col>3</Col>
-                </Row>
-              </Col>
+              <MainCategory categoryName={category[i]} settings={settings} />
+              <MainMeasure
+                value={main_measure[i]}
+                settings={settings}
+                flag={isDisabledAdditionalMeasures}
+              />
+              {!isDisabledAdditionalMeasures && (
+                <Col xs="6">
+                  <AdditionalCategory
+                    settings={settings}
+                    names={additionalCategory}
+                  />
+                  <AdditionalMeasure
+                    settings={settings}
+                    values={additionalMeasures}
+                    index={i}
+                  />
+                </Col>
+              )}
             </Row>
           </Container>
         ))}

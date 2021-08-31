@@ -74,10 +74,15 @@ export class Visual implements IVisual {
     nameOfRole: string[]
   ): Array<string> {
     let additionalCategory: Array<string> = [];
-    values.forEach((v, i) => {
-      nameOfRole.map((name) => {
-        if (v.source.roles[name]) additionalCategory.push(v.source.displayName);
+    nameOfRole.forEach((name) => {
+      let flag: boolean = false;
+      values.forEach((v, i) => {
+        if (v.source.roles[name]) {
+          additionalCategory.push(v.source.displayName);
+          flag = true;
+        }
       });
+      if (!flag) additionalCategory.push("");
     });
     return additionalCategory;
   }
@@ -112,15 +117,23 @@ export class Visual implements IVisual {
         "main_measure"
       );
 
-      let measure_comparison_1: Array<Number> = this.getMeasureValues(
+      const measure_comparison_1: Array<Number> = this.getMeasureValues(
         options.dataViews[0].categorical.values,
         "measure_comparison_1"
       );
-
-      let measure_comparison_2: Array<Number> = this.getMeasureValues(
+      const measure_comparison_2: Array<Number> = this.getMeasureValues(
         options.dataViews[0].categorical.values,
         "measure_comparison_2"
       );
+      const measure_comparison_3: Array<Number> = this.getMeasureValues(
+        options.dataViews[0].categorical.values,
+        "measure_comparison_3"
+      );
+      const additionalMeasures = [
+        { name: "measure_comparison_1", values: measure_comparison_1 },
+        { name: "measure_comparison_2", values: measure_comparison_2 },
+        { name: "measure_comparison_3", values: measure_comparison_3 },
+      ];
 
       Card.update({
         width: width,
@@ -128,8 +141,7 @@ export class Visual implements IVisual {
         settings: settings,
         category: category,
         main_measure: main_measure,
-        measure_comparison_1: measure_comparison_1,
-        measure_comparison_2: measure_comparison_2,
+        additionalMeasures: additionalMeasures,
         additionalCategory: additionalCategory,
       });
     }
