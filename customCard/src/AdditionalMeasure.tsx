@@ -12,10 +12,14 @@ function AdditionalMeasure(props) {
 
   const style = {
     textAlign: "center" as "center",
+    display: "flex" as "flex",
+    justifyContent: "center" as "center",
+    flexDirection: "column" as "column",
+    fontSize: settings.categoryAdditionalMeasures.textSize
   };
 
   return (
-    <Row style={{ display: "flex", flexWrap: "wrap", alignContent: "stretch" }}>
+    <Row style={{ height: "75%" }}>
       {values.map(
         (v, i) =>
           additionalMeasuresFlag[i] && (

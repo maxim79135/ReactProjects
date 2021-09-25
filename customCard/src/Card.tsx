@@ -92,11 +92,14 @@ class Card extends React.Component<State> {
       !settings.categoryAdditionalMeasures.show;
 
     return (
-      <Row xs={cardsPerRow.toString()}>
+      <Row xs={cardsPerRow.toString()} className="g-3">
         {cards.map((v, i) => (
-          <Container className="card">
+          <Col
+            className="bg-light"
+            style={{ border: "1px solid rgba(86,61,124,.15)" }}
+          >
+            <MainCategory categoryName={category[i]} settings={settings} />
             <Row>
-              <MainCategory categoryName={category[i]} settings={settings} />
               <MainMeasure
                 value={main_measure[i]}
                 settings={settings}
@@ -116,7 +119,7 @@ class Card extends React.Component<State> {
                 </Col>
               )}
             </Row>
-          </Container>
+          </Col>
         ))}
       </Row>
     );

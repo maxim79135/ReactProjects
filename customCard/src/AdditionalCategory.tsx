@@ -22,7 +22,7 @@ function AdditionalCategory(props) {
 
   return (
     settings.categoryAdditionalMeasures.show && (
-      <Row>
+      <Row style={{ height: "25%" }}>
         {names.map(
           (name, i) =>
             additionalMeasuresFlag[i] && <Col style={style}>{name}</Col>
